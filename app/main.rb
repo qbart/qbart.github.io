@@ -23,6 +23,6 @@ get '/' do
   haml :index
 end
 
-get '/assets/*.css' do
+get '*.css' do
   scss :'../assets/application', :style => :expanded
 end
