@@ -2,7 +2,8 @@ $link-color: #009fbb;
 
 header {
   border: 1px solid #ccc;
-  width: 256px;
+  min-width: 256px;
+  max-width: 264px;
   padding: 20px;
   margin: 20px auto;
 }
@@ -40,12 +41,25 @@ body {
     border-radius: 40px;
   }
 
-  float: left;
-  margin-right: 20px;
+  p {
+    max-width: 80px;
+  }
+
+  span {
+    border-radius: 5px;
+      border: 1px solid;
+  padding: 1px 4px;
+  line-height: 24px;
+  }
 }
 
+
 .col {
-  float: left;
+  &.avatar {
+    float: left;
+  }
+
+  float: right;
 }
 
 a {
@@ -66,6 +80,12 @@ nav {
   border-top: 1px solid #ccc;
   margin-top: 10px;
 
+  &:hover {
+    span {
+      font-weight: 700;
+    }
+  }
+
   span {
     color: #000;
     float: right;
@@ -73,5 +93,10 @@ nav {
 
   a {
     display: block;
+    margin-bottom: 4px;
+
+    &:first-child {
+      margin-bottom: 0px;
+    }
   }
 }
