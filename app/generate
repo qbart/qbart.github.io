@@ -1,4 +1,5 @@
 #!/bin/sh
 
-sass --scss --sourcemap=none assets/application.scss ../application.css
-haml --style=ugly --double-quote-attributes views/index.haml ../index.html
+mkdir -p ../gen
+sass --scss --sourcemap=none assets/application.scss ../gen/application.css
+haml --style=ugly --double-quote-attributes views/index.haml ../gen/index.html
