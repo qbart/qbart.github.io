@@ -1,4 +1,0 @@
-#!/bin/sh
-
-sass --scss --sourcemap=none assets/application.scss ../application.css
-haml --style=ugly --double-quote-attributes views/index.haml ../index.html
