@@ -1,0 +1,73 @@
+</div>
+
+<footer>
+  <div class="container">
+    <nav>
+      <a href="{{ .Site.Params.GitHub.url }}">
+        <span class="icon is-small">
+          <i class="fab fa-github" aria-hidden="true"></i>
+        </span>
+        <span>{{ .Site.Params.GitHub.name }}</span>
+      </a>
+
+      <a href="{{ .Site.Params.Twitter.url }}">
+        <span class="icon is-small">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </span>
+        <span>{{ .Site.Params.Twitter.name }}</span>
+      </a>
+
+      <a href="{{ .Site.Params.LinkedIn.url }}">
+        <span class="icon is-small">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </span>
+        <span>{{ .Site.Params.LinkedIn.name }}</span>
+      </a>
+    </nav>
+    <div class="footnote">
+      &copy; {{ .Site.Params.WWW.name }}
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.localStorage && window.localStorage.getItem("theme") === "light") {
+    document.body.classList.toggle('light');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('a-burger');
+    const adjust = document.getElementById('a-adjust');
+
+    burger.addEventListener('click', () => {
+      document.body.classList.toggle('burger-open');
+    });
+
+    adjust.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+
+      if (window.localStorage) {
+        const theme = window.localStorage.getItem("theme") || "dark";
+        if (theme === "dark") {
+          window.localStorage.setItem("theme", "light");
+        } else {
+          window.localStorage.setItem("theme", "dark");
+        }
+      }
+    });
+  });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', '{{ .Site.GoogleAnalytics }}');
+</script>
+
+</body>
+
+</html>
