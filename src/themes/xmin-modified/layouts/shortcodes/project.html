@@ -1,0 +1,8 @@
+<div class="project">
+    <div class="project-header">
+        <i class="{{ .Get "icon" }}"></i>
+        <a href="{{ .Get "url" }}">{{ replace (.Get "url") "https://github.com/" "" }}</a>
+    </div>
+    <p class="project-summary">{{ .Get "summary" }}</p>
+    <div class="project-footer">{{ .Get "tag" }}</div>
+</div>

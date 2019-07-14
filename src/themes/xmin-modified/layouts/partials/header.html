@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Titillium+Web:300,300i,400,400i,600,600i,700,700i,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ "/css/normalize.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-left">
+        <a href="/">
+          {{ .Site.Params.navTitle }}
+        </a>
+      </div>
+
+      <div class="navbar-right">
+        <a id="a-adjust">
+          <i class="fas fa-adjust"></i>
+        </a>
+        <a id="a-burger">
+          <i class="closed fas fa-bars"></i>
+          <i class="opened fas fa-times"></i>
+        </a>
+      </div>
+
+      <div id="submenu">
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </div>
+  </nav>
+  <div class="container content">
