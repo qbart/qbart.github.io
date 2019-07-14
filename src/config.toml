@@ -1,0 +1,50 @@
+baseURL = "https://qbart.dev/"
+languageCode = "en-us"
+title = "QBart's log"
+theme = "xmin-modified"
+enableEmoji = true
+disqusShortname = "qbart"
+GoogleAnalytics = "UA-143750284-1"
+footnotereturnlinkcontents = "↩"
+pygmentsCodeFences = true
+pygmentsStyle="dracula"
+
+[permalinks]
+  posts = "/:section/:year/:slug"
+
+[[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 1
+
+# [[menu.main]]
+#     name = "Categories"
+#     url = "/categories/"
+#     weight = 1
+# [[menu.main]]
+#     name = "Tags"
+#     url = "/tags/"
+#     weight = 2
+# [[menu.main]]
+#     name = "RSS"
+#     url = "/index.xml"
+
+[Params]
+    navTitle="tail -f qbart.dev.log"
+    description = "TODO: description"
+
+[Params.WWW]
+name = "Bartłomiej Wójtowicz"
+url = "https://qbart.dev"
+
+[Params.GitHub]
+name = "GitHub"
+url = "https://github.com/qbart"
+
+[Params.Twitter]
+name = "Twitter"
+url = "https://twitter.com/_qbart"
+
+[Params.LinkedIn]
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/bartlomiej-wojtowicz-24b58b1b"
