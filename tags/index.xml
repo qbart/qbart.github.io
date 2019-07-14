@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on QBart&#39;s log</title>
+    <link>https://qbart.dev/tags/</link>
+    <description>Recent content in Tags on QBart&#39;s log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Jan 2019 18:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://qbart.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>aws</title>
+      <link>https://qbart.dev/tags/aws/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci</title>
+      <link>https://qbart.dev/tags/ci/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://qbart.dev/tags/docker/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://qbart.dev/tags/github/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github actions</title>
+      <link>https://qbart.dev/tags/github-actions/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/github-actions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://qbart.dev/tags/pipeline/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crystal</title>
+      <link>https://qbart.dev/tags/crystal/</link>
+      <pubDate>Fri, 08 Jun 2018 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/crystal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regex</title>
+      <link>https://qbart.dev/tags/regex/</link>
+      <pubDate>Fri, 08 Jun 2018 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/regex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regular expressions</title>
+      <link>https://qbart.dev/tags/regular-expressions/</link>
+      <pubDate>Fri, 08 Jun 2018 18:00:00 +0200</pubDate>
+      
+      <guid>https://qbart.dev/tags/regular-expressions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>news</title>
+      <link>https://qbart.dev/tags/news/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://qbart.dev/tags/news/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
