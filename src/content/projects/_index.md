@@ -57,7 +57,7 @@ title: "Open source projects"
 {{< project
     icon="fas fa-gem"
     url="https://github.com/qbart/kemal-healthcheck-handler"
-    summary="Crystal shard for Kemal framework that exposes healthcheck endpoint for AWS load balancer."
+    summary="Crystal shard for Kemal that exposes healthcheck endpoint for AWS load balancer."
     tag="Crystal"
 >}}
 
