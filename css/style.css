@@ -288,8 +288,25 @@ video {
   width: 100%;
 }
 
+.project-header span {
+  position: absolute;
+}
+
+.project-header a {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.project-summary {
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
 .project-footer {
   text-align: right;
+  font-style: italic;
 }
 
 /* -- mobile */
