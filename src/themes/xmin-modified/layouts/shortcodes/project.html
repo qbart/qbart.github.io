@@ -3,7 +3,7 @@
         <span>
             <i class="{{ .Get "icon" }}"></i>
         </span>
-        <a href="{{ .Get "url" }}">{{ replace (.Get "url") "https://github.com/qbart/" "" }}</a>
+        <a href="{{ .Get "url" }}">{{ replace (replace (.Get "url") "https://github.com/" "") "qbart/" "" }}</a>
     </div>
     <p class="project-summary">{{ .Get "summary" }}</p>
     <div class="project-footer">{{ .Get "tag" }}</div>

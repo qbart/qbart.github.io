@@ -31,29 +31,11 @@
 </footer>
 
 <script>
-  if (window.localStorage && window.localStorage.getItem("theme") === "light") {
-    document.body.classList.toggle('light');
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('a-burger');
-    const adjust = document.getElementById('a-adjust');
 
     burger.addEventListener('click', () => {
       document.body.classList.toggle('burger-open');
-    });
-
-    adjust.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-
-      if (window.localStorage) {
-        const theme = window.localStorage.getItem("theme") || "dark";
-        if (theme === "dark") {
-          window.localStorage.setItem("theme", "light");
-        } else {
-          window.localStorage.setItem("theme", "dark");
-        }
-      }
     });
   });
 </script>

@@ -11,6 +11,12 @@ title: "Open source projects"
     tag="Go"
 >}}
 
+{{< project
+    icon="fas fa-cloud"
+    url="https://github.com/qbart/rpi-boardgame-turns"
+    summary="App designed for Raspberry PI for measuring turns when playing board games."
+    tag="Elixir"
+>}}
 
 {{< project
     icon="fas fa-database"
@@ -52,6 +58,13 @@ title: "Open source projects"
     url="https://github.com/qbart/elixir-workshop-01"
     summary="Small workshop with Elixir basics."
     tag="Elixir"
+>}}
+
+{{< project
+    icon="fas fa-gem"
+    url="https://github.com/Selleo/crystular"
+    summary="Regular expression tester inspired by Rubular."
+    tag="Crystal"
 >}}
 
 {{< project

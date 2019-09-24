@@ -13,7 +13,7 @@ pygmentsStyle="dracula"
   posts = "/:section/:year/:slug"
 
 [[menu.main]]
-    name = "Projects"
+    name = "Open source"
     url = "/projects/"
     weight = 1
 

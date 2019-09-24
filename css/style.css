@@ -272,7 +272,7 @@ video {
   flex-direction: row;
   flex-wrap: wrap;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   margin-left: -8px;
@@ -295,7 +295,6 @@ video {
 .project-header a {
   margin-left: 32px;
   margin-right: 32px;
-  word-wrap: none;
   display: inline-block;
 }
 
