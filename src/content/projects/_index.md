@@ -12,7 +12,7 @@ title: "Open source projects"
 >}}
 
 {{< project
-    icon="fas fa-cloud"
+    icon="fas fa-vial"
     url="https://github.com/qbart/rpi-boardgame-turns"
     summary="App designed for Raspberry PI for measuring turns when playing board games."
     tag="Elixir"
