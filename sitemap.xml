@@ -8,23 +8,9 @@
   </url>
   
   <url>
-    <loc>https://qbart.dev/tags/aws/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://qbart.dev/categories/</loc>
     <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/ci/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/docker/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -33,48 +19,57 @@
   </url>
   
   <url>
-    <loc>https://qbart.dev/tags/github/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/github-actions/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/pipeline/</loc>
-    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://qbart.dev/posts/</loc>
     <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://qbart.dev/tags/</loc>
     <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/aws/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/ci/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/docker/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/github/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/github-actions/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/pipeline/</loc>
+    <lastmod>2019-01-05T18:00:00+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://qbart.dev/categories/web/</loc>
     <lastmod>2019-01-05T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/crystal/</loc>
-    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/regex/</loc>
-    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://qbart.dev/tags/regular-expressions/</loc>
-    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -83,7 +78,30 @@
   </url>
   
   <url>
+    <loc>https://qbart.dev/tags/crystal/</loc>
+    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/regex/</loc>
+    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/regular-expressions/</loc>
+    <lastmod>2018-06-08T18:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://qbart.dev/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>https://qbart.dev/tags/news/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
