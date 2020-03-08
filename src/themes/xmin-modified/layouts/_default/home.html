@@ -26,6 +26,28 @@
   {{- end }}
 </div>
 
+{{ $other := $.Site.Data.other.list.data }}
+<h2>Other publications</h2>
+<div class="slides">
+  {{- range $other }}
+  <div class="slides-group">
+    <div class="slides-year">{{ .year }}</div>
+    <hr>
+
+    <div class="slides-list">
+      {{- range .data }}
+      <div class="slides-item">
+        <a href="{{.url}}">
+          <span class="slides-title">{{ .title }}</span>
+          <span class="slides-day">{{ dateFormat "Jan 2" .date }}</span>
+        </a>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+</div>
+
 {{ $slides := $.Site.Data.slides.list.data }}
 <h2>Slides</h2>
 <div class="slides">

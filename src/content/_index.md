@@ -30,4 +30,4 @@ My name is Bartłomiej Wójtowicz.
 I'm a software engineer currently working at [Selleo](https://selleo.com). I specialize in backend development, databases and devops.
 As a hobby I develop video games in [SoftKiwi](https://www.softkiwi.com/) and play bunch of board games.
 I am also into sound design, Artificial Intelligence, game jams ([GGJ](https://globalgamejam.org/users/bwojtowicz)/[LD](https://ldjam.com/users/bart/games)) and learning new programming languages.
-From time to time I tinker with Raspberry PI.
+From time to time I tinker with Raspberry Pi.

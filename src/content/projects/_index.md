@@ -5,6 +5,13 @@ title: "Open source projects"
 {{< projects >}}
 
 {{< project
+    icon="fa fa-terminal"
+    url="https://github.com/qbart/timelog"
+    summary="Time logging in CLI"
+    tag="Go"
+>}}
+
+{{< project
     icon="fas fa-cloud"
     url="https://github.com/qbart/ser"
     summary="Ser is a small monitoring tool for your AWS instances, targets groups, load balancers, ECS."
@@ -17,6 +24,14 @@ title: "Open source projects"
     summary="App designed for Raspberry PI for measuring turns when playing board games."
     tag="Elixir"
 >}}
+
+{{< project
+    icon="fa fa-microchip"
+    url="https://github.com/qbart/bmo"
+    summary="IoT home for controlling Yeelight"
+    tag="Go"
+>}}
+
 
 {{< project
     icon="fas fa-database"
