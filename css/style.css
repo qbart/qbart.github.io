@@ -12,7 +12,7 @@ body {
 a,
 a:visited {
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
   color: #04dac6;
 }
 a:hover {
@@ -20,7 +20,7 @@ a:hover {
 }
 
 hr {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #333;
   border-bottom: none;
   border-left: none;
   border-right: none;
@@ -36,7 +36,6 @@ hr {
 /* nav */
 
 .navbar {
-  background-color: #1d1d1d;
   color: #ddd;
   height: 64px;
 }
@@ -284,7 +283,7 @@ video {
 }
 
 .project {
-  border: 1px solid #ddd;
+  border: 1px solid #333;
   padding: 16px;
   margin: 16px 8px;
   border-radius: 4px;

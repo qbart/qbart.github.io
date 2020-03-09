@@ -6,5 +6,5 @@
         <a href="{{ .Get "url" }}">{{ replace (replace (.Get "url") "https://github.com/" "") "qbart/" "" }}</a>
     </div>
     <p class="project-summary">{{ .Get "summary" }}</p>
-    <div class="project-footer">{{ .Get "tag" }}</div>
+    <div class="project-footer {{ .Get "tag" }}">{{ .Get "tag" }}</div>
 </div>

@@ -48,3 +48,7 @@ url = "https://twitter.com/_qbart"
 [Params.LinkedIn]
 name = "LinkedIn"
 url = "https://www.linkedin.com/in/bartlomiej-wojtowicz-24b58b1b"
+
+[Params.Pinterest]
+name = "Pinterest"
+url = "https://pinterest.com/bartlomiejwojtowicz/"
