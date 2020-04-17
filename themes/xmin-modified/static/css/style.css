@@ -199,6 +199,10 @@ footer nav a {
   text-decoration: none;
 }
 
+footer nav a span.icon {
+  margin-right: 8px;
+}
+
 .footnote {
   text-align: center;
   margin-top: 16px;
@@ -271,7 +275,7 @@ pre code {
 
 img,
 iframe,
-video {
+video { 
   max-width: 100%;
 }
 
