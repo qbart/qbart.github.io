@@ -161,6 +161,13 @@ hr {
   text-align: right;
 }
 
+@media screen and (max-width: 1023px) {
+  .slides-day,
+  .posts-day {
+    display: none;
+  }
+}
+
 .is-mobile {
   display: none;
 }
@@ -181,6 +188,16 @@ hr {
 
   .is-desktop {
     display: none;
+  }
+}
+
+
+@media screen and (max-width: 1023px) {
+  h1 {
+    font-size: 28px;
+  }
+  h1 {
+    font-size: 28px;
   }
 }
 
