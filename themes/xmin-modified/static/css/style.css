@@ -250,12 +250,15 @@ main figcaption {
 pre {
   padding: 0.8em;
   overflow-x: auto;
+  border-radius: 3px;
+  background: #282a36;
 }
 
 code {
   background: #282a36;
   color: #fff;
   padding: 0 0.3em;
+  border-radius: 3px;
 }
 pre code {
   background: none;
