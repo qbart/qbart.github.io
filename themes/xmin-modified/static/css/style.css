@@ -218,7 +218,11 @@ footer nav a {
 }
 
 .article-meta .tag {
-  padding: 16px 16px 0 0;
+  padding: 8px;
+  background: #19403C;
+  border-radius: 8px;
+  margin-right: 16px;
+  margin-top: 16px;
 }
 
 .article-meta .date {
@@ -286,10 +290,10 @@ video {
 }
 
 .project {
-  border: 1px solid #333;
+  border: 2px solid #333;
   padding: 16px;
   margin: 16px 8px;
-  border-radius: 4px;
+  border-radius: 3px;
   max-width: 272px;
   width: 100%;
 }
