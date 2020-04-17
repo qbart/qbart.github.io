@@ -328,6 +328,7 @@ video {
   border: 2px solid #333;
   padding: 16px;
   margin: 16px 8px;
+  margin: 0 8px 16px 8px;
   border-radius: 3px;
   max-width: 272px;
   width: 100%;
