@@ -6,6 +6,13 @@ title: "Open source projects"
 
 {{< project
     icon="fa fa-terminal"
+    url="https://github.com/ohkrab/krab"
+    summary="Database tool. WIP."
+    tag="Go"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
     url="https://github.com/qbart/timelog"
     summary="Time logging in CLI"
     tag="Go"
