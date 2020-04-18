@@ -1,8 +1,10 @@
 {{ partial "header.html" . }}
 
-<h2>Hello...</h2>
+<h1>Hello...</h1>
 
+<div class="greeting">
 {{ .Content }}
+</div>
 
 <h2>Articles</h2>
 {{ $posts := where site.RegularPages "Type" "in" "posts" }}

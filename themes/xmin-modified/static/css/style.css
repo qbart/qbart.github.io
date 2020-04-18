@@ -21,10 +21,11 @@ a:hover {
 }
 
 hr {
-  border-top: 1px solid #333;
+  border-top: 1px solid #ccc;
   border-bottom: none;
   border-left: none;
   border-right: none;
+  display: none;
 }
 
 .container {
@@ -121,9 +122,13 @@ hr {
 
 /* posts listing */
 
-.posts-group {
+.posts-group,
+.slides-group
+ {
   margin-bottom: 32px;
-  margin-top: 32px;
+  border: 1px solid #282A36;
+  border-radius: 3px;
+  padding: 16px;
 }
 
 .posts-item a {
@@ -135,6 +140,16 @@ hr {
   /* font-weight: 600; */
 }
 
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  margin-bottom: 12px;
+  margin-top: 24px;
+  font-size: 22px;
+}
+
 .posts-day {
   min-width: 48px;
   text-align: right;
@@ -142,10 +157,6 @@ hr {
 
 /* slides listing */
 
-.slides-group {
-  margin-bottom: 32px;
-  margin-top: 32px;
-}
 
 .slides-item a {
   display: flex;
@@ -356,12 +367,18 @@ video {
   font-style: italic;
 }
 
+.greeting {
+  
+}
+
 /* -- mobile */
 @media screen and (max-width: 1023px) {
   .project {
     max-width: 100%;
   }
 }
+
+
 
 /*
 blockquote {
