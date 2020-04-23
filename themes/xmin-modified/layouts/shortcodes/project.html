@@ -1,10 +1,12 @@
-<div class="project">
+<a href="{{ .Get "url" }}" class="project lang {{ .Get "css" }}">
     <div class="project-header">
-        <span>
+        <span class="project-icon">
             <i class="{{ .Get "icon" }}"></i>
         </span>
-        <a href="{{ .Get "url" }}">{{ replace (replace (.Get "url") "https://github.com/" "") "qbart/" "" }}</a>
+        <span class="project-title">
+            {{ replace (replace (.Get "url") "https://github.com/" "") "qbart/" "" }}
+        </span>
     </div>
     <p class="project-summary">{{ .Get "summary" }}</p>
-    <div class="project-footer {{ .Get "tag" }}">{{ .Get "tag" }}</div>
-</div>
+    <div class="project-footer">{{ .Get "tag" }}</div>
+</a>
