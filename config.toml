@@ -1,7 +1,7 @@
 baseURL = "https://qbart.dev/"
 languageCode = "en-us"
 title = "QBart's log"
-theme = "xmin-modified"
+theme = "custom"
 enableEmoji = true
 disqusShortname = "qbart"
 GoogleAnalytics = "UA-143750284-1"
