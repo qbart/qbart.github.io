@@ -10,6 +10,7 @@ title: "Open source projects"
     summary="Database tool. WIP."
     tag="Go"
     css="lang-go"
+    fav=true
 >}}
 
 {{< project
@@ -18,6 +19,7 @@ title: "Open source projects"
     summary="Time logging in CLI"
     tag="Go"
     css="lang-go"
+    fav=true
 >}}
 
 {{< project
@@ -51,6 +53,7 @@ title: "Open source projects"
     summary="Miscellaneous utilities for PostgreSQL."
     tag="PostgreSQL"
     css="lang-pg"
+    fav=true
 >}}
 
 {{< project
@@ -75,6 +78,7 @@ title: "Open source projects"
     summary="Workshop with CTEs and window functions."
     tag="PostgreSQL"
     css="lang-pg"
+    fav=true
 >}}
 
 {{< project
@@ -99,6 +103,7 @@ title: "Open source projects"
     summary="Regular expression tester inspired by Rubular."
     tag="Crystal"
     css="lang-crystal"
+    fav=true
 >}}
 
 {{< project

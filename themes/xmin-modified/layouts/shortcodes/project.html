@@ -3,9 +3,14 @@
         <span class="project-icon">
             <i class="{{ .Get "icon" }}"></i>
         </span>
-        <span class="project-title">
+        <div class="project-title">
             {{ replace (replace (.Get "url") "https://github.com/" "") "qbart/" "" }}
-        </span>
+            {{ if .Get "fav" }}
+            <span class="project-fav">
+                <i class="fas fa-star"></i>
+            </span>
+            {{ end }}
+        </div>
     </div>
     <p class="project-summary">{{ .Get "summary" }}</p>
     <div class="project-footer">{{ .Get "tag" }}</div>
