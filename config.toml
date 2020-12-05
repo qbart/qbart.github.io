@@ -1,7 +1,7 @@
 baseURL = "https://qbart.dev/"
 languageCode = "en-gb"
 defaultContentLanguage = "en"
-title = "Bartłomiej Wójtowicz"
+title = "tail -f qbart.dev.log"
 theme = "hermit"
 enableEmoji = true
 disqusShortname = "qbart"
@@ -13,10 +13,10 @@ copyright="Bartłomiej Wójtowicz"
 rssLimit=20
 
 [author]
-  name = "Bartłomiej Wójtowicz"
+name = "Bartłomiej Wójtowicz"
 
 [taxonomies]
-  tag = "tags"
+tag = "tags"
 
 [Params]
 customCSS = ["css/custom.css"]
@@ -25,7 +25,7 @@ dateformShort   = "Jan 2"
 dateformNum     = "2006-01-02"
 dateformNumTime = "2006-01-02 15:04 -0700"
 code_copy_button = true
-homeSubtitle = "Software engineer // tail -f qbart.dev.log"
+homeSubtitle = "Bartłomiej Wójtowicz - a software engineer"
 
 [[Params.Social]]
 name = "email"
