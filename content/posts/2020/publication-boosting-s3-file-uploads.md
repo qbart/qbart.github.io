@@ -7,4 +7,4 @@ tags:
 - s3
 ---
 
-[Article](https://selleo.com/blog/boosting-file-uploads-with-amazon-s3-transfer-acceleration) about using Amazon S3 Transfer Acceleration.
+[Article](https://selleo.com/blog/boosting-file-uploads-with-amazon-s3-transfer-acceleration?utm_source=qbart.dev&utm_campaign=qbart.dev) about using Amazon S3 Transfer Acceleration.
