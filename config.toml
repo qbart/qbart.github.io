@@ -1,54 +1,69 @@
 baseURL = "https://qbart.dev/"
-languageCode = "en-us"
-title = "QBart's log"
-theme = "xmin-modified"
+languageCode = "en-gb"
+defaultContentLanguage = "en"
+title = "Bartłomiej Wójtowicz"
+theme = "hermit"
 enableEmoji = true
 disqusShortname = "qbart"
 GoogleAnalytics = "UA-143750284-1"
 footnotereturnlinkcontents = "↩"
 pygmentsCodeFences = true
 pygmentsStyle="dracula"
+copyright="Bartłomiej Wójtowicz"
+rssLimit=20
 
-[permalinks]
-  posts = "/:section/:year/:slug"
+[author]
+  name = "Bartłomiej Wójtowicz"
 
-[[menu.main]]
-    name = "Open source"
-    url = "/projects/"
-    weight = 1
-
-# [[menu.main]]
-#     name = "Categories"
-#     url = "/categories/"
-#     weight = 1
-# [[menu.main]]
-#     name = "Tags"
-#     url = "/tags/"
-#     weight = 2
-# [[menu.main]]
-#     name = "RSS"
-#     url = "/index.xml"
+[taxonomies]
+  tag = "tags"
 
 [Params]
-    navTitle="tail -f qbart.dev.log"
-    description = "TODO: description"
+customCSS = ["css/custom.css"]
+dateform        = "Jan 2, 2006"
+dateformShort   = "Jan 2"
+dateformNum     = "2006-01-02"
+dateformNumTime = "2006-01-02 15:04 -0700"
+code_copy_button = true
+homeSubtitle = "Software engineer // tail -f qbart.dev.log"
 
-[Params.WWW]
-name = "Bartłomiej Wójtowicz"
-url = "https://qbart.dev"
+[[Params.Social]]
+name = "email"
+url = "mailto:hiATqbart.dev"
 
-[Params.GitHub]
-name = "GitHub"
+[[Params.Social]]
+name = "github"
 url = "https://github.com/qbart"
 
-[Params.Twitter]
-name = "Twitter"
-url = "https://twitter.com/_qbart"
-
-[Params.LinkedIn]
-name = "LinkedIn"
+[[Params.Social]]
+name = "linkedin"
 url = "https://www.linkedin.com/in/bartlomiej-wojtowicz-24b58b1b"
 
-[Params.Pinterest]
-name = "Pinterest"
+[[Params.Social]]
+name = "twitter"
+url = "https://twitter.com/softkiwi"
+
+[[Params.Social]]
+name = "pinterest"
 url = "https://pinterest.com/bartlomiejwojtowicz/"
+
+
+[permalinks]
+posts = "/:section/:year/:slug"
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 10
+
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 20
+
+[[menu.main]]
+name = "Open source"
+url = "/projects/"
+weight = 30
+
+
