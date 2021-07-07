@@ -29,10 +29,9 @@ Another use case is when I do workshops or teach about the PostgreSQL I really w
 Last but not least is the old project that I worked on. Project was written in *Ruby on Rails* and used *Apartment* gem to manage [tenants](https://en.wikipedia.org/wiki/Multitenancy)
 (for non-Rubists: Apartment is a library that allows to have different strategies for mutlitenancy and integrates with Rails ORM).
 It perfectly matched our scenario since we had small number of tenants and we knew it won't grow too much so we went with schema-based approach (single database with 1 schema per each tenant and public schema for other stuff).
-So what's wrong with the *Apartment* then? Well, it's not maintained anymore and if I remember correctly you couldn't upgrade PostgreSQL above version 10 because the way the it works is by creating a dump of a database and restoring it to a new schema
+So what's wrong with the *Apartment* then? Well, it's not maintained anymore and if I remember correctly you couldn't upgrade PostgreSQL above version 10 because the way it works is by creating a dump of a database and restoring it to a new schema
 and in PostgreSQL 11 dump behavior has changed a little that prevented *Apartment* to create a valid restore - I think this issue was later addressed by someone in the community with a workaround but I've never tested it.
-In the past I did a presentation on how to replace *Apartment* with simple SQL using event triggers so feel free to check it out: [Schema-based multi-tenancy in PostgreSQL]({{< ref "posts/2019/slides-schema-based-multi-tenancy-in-postgresql" >}}).
-Multitenancy is an important topic to me so I would like to address that in my software.
+In the past I did a presentation on how to replace *Apartment* with simple SQL using event triggers so feel free to check it out: [Schema-based multi-tenancy in PostgreSQL]({{< ref "posts/2019/slides-schema-based-multi-tenancy-in-postgresql" >}}) - this should work in simple use cases, it depends what do you need.
 
 It's hard to write about other reasons since "Krab" is too small right now compared to what I have planned but I think I will expand the topic in the future releases as more features are added.
 
@@ -42,7 +41,7 @@ I've tried my best to provide very detailed documentation for [Krab](https://ohk
 
 Currently Krab only supports one feature - [migrations](https://en.wikipedia.org/wiki/Schema_migration) - which again is not polished enough to my liking but it's a starting point.
 
-Let's define a `docker-compose.yml` file to use for the database:
+Let's start by defining a `docker-compose.yml` file so we can run database:
 
 ```yaml
 version: "3"
@@ -64,16 +63,16 @@ Then start the container:
 docker-compose up
 ```
 
-Next, install the Krab, possible options [here](https://ohkrab.dev/docs/get_started/installation/). For local development prefer asdf version.
+Next, install the Krab, possible options of how to do it are [here](https://ohkrab.dev/docs/get_started/installation/). For local development prefer `asdf` version.
 Try in your terminal:
 
 ```bash
 krab -version
 ```
 
-It should print active version, e.g.: `0.2.4`.
+It should print the active version, e.g.: `0.2.4`.
 
-Finally we can define the configuration, you can do that in seperate files as your project grows but for now let's create one file `default.krab.hcl`:
+Then we define the [configuration](https://ohkrab.dev/docs/configuration/overview/), it can be done in seperate files as your project grows but for now let's create one file `default.krab.hcl`:
 
 ```hcl
 # 1
@@ -121,7 +120,9 @@ File above contains two [migration](https://ohkrab.dev/docs/configuration/resour
 Because we defined `default` migration set in config files, you should see it as a subcommand:
 
 ```bash
-krab migrate up # won't run migrations because <set> argument is needed
+krab migrate up
+# it won't run migrations because <set> argument is needed,
+# instead it will print the subcommands
 ```
 
 So the output will be the list of available sets to migrate:
@@ -142,7 +143,7 @@ DATABASE_URL="postgres://krab:secret@localhost:5432/krab?sslmode=disable" \
 
 `DATABASE_URL` environment variable is required, read more [here](https://ohkrab.dev/docs/configuration/environment_variables/).
 
-It's important to note that [migrate up command](https://ohkrab.dev/docs/commands/migrate/up/) will execute migrations in the order defined by the migration set and not by their lexicographical scope - which is different than most alternatives do.
+It's important to note that [migrate up](https://ohkrab.dev/docs/commands/migrate/up/) command will execute migrations in the order defined by the migration set and not by their lexicographical scope - which is different than most alternatives do.
 Version here only acts as a unique identifier, its "sortability" does not matter.
 
 
@@ -163,7 +164,7 @@ krab=# select * from schema_migrations;
 (2 rows)
 ```
 
-As well our turtle:
+As well as our turtle 🐢
 
 ```
 krab=# select * from animals;
@@ -205,7 +206,7 @@ You can stop the docker container now.
 
 There are still some things I would like to improve so I would be a bit hesitant to use that in production environment, unless you know what you are doing.
 One of the reason is that currently all migrations run within transaction which will cause trouble when running concurrent operations like:
-`CREATE INDEX CONCURRENTLY ...` - I need to allow to specify sth like `transaction = false` for migration resource so everything works.
+`CREATE INDEX CONCURRENTLY ...` - I need to allow to specify option like `transaction = false` for migration resource so everything works.
 
 For now treat it as a toy and provide the feedback if you wish.
 
@@ -216,6 +217,6 @@ In the upcoming releases I would like to tackle these things:
 - adding more customization around migration execution (e.g. transactions)
 - improving existing CLI (better progress tracking, config generation)
 - building some DSL for migrations (not only raw SQL)
-- providing mini test framework (yes, I need that)
+- providing mini test framework (yes, I need that so much)
 - adding an ability to create custom actions (with arguments) - that's a big one
 
