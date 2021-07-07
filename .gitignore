@@ -2,3 +2,4 @@
 .sass-cache
 gen/
 _gen/
+/tmp
