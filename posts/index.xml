@@ -1,4 +1,142 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on tail -f qbart.dev.log</title><link>https://qbart.dev/posts/</link><description>Recent content in Posts on tail -f qbart.dev.log</description><generator>Hugo -- gohugo.io</generator><language>en-gb</language><copyright>Bartłomiej Wójtowicz</copyright><lastBuildDate>Mon, 24 Feb 2020 13:00:00 +0200</lastBuildDate><atom:link href="https://qbart.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Publication: Boosting File Uploads With Amazon S3 Transfer Acceleration</title><link>https://qbart.dev/posts/2020/publication-boosting-file-uploads-with-amazon-s3-transfer-acceleration/</link><pubDate>Mon, 24 Feb 2020 13:00:00 +0200</pubDate><guid>https://qbart.dev/posts/2020/publication-boosting-file-uploads-with-amazon-s3-transfer-acceleration/</guid><description>Article about using Amazon S3 Transfer Acceleration.</description><content type="html"><![CDATA[<p><a href="https://selleo.com/blog/boosting-file-uploads-with-amazon-s3-transfer-acceleration?utm_source=qbart.dev&amp;utm_campaign=qbart.dev">Article</a> about using Amazon S3 Transfer Acceleration.</p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on tail -f qbart.dev.log</title><link>https://qbart.dev/posts/</link><description>Recent content in Posts on tail -f qbart.dev.log</description><generator>Hugo -- gohugo.io</generator><language>en-gb</language><copyright>Bartłomiej Wójtowicz</copyright><lastBuildDate>Wed, 07 Jul 2021 01:32:00 +0200</lastBuildDate><atom:link href="https://qbart.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Release: Oh! Krab! A PostgreSQL tool written in Go based on HCL</title><link>https://qbart.dev/posts/2021/release-oh-krab-a-postgresql-tool-written-in-go-based-on-hcl/</link><pubDate>Wed, 07 Jul 2021 01:32:00 +0200</pubDate><guid>https://qbart.dev/posts/2021/release-oh-krab-a-postgresql-tool-written-in-go-based-on-hcl/</guid><description>I am happy to announce that I have finally finished MVP of my tool for PostgreSQL - Oh! Krab! 🦀. It&amp;rsquo;s far from perfect but I needed to start somewhere. There&amp;rsquo;s more to come.
+Why? So, the natural question is why I&amp;rsquo;ve created this in the first place. There are a few reasons.
+First, I like experimenting with different technologies and sometimes I would like to compare multiple solutions that use PostgreSQL as a database, but writing migrations more than once in different frameworks or programming languages is a pain.</description><content type="html"><![CDATA[<p>I am happy to announce that I have finally finished <a href="https://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a> of my tool for PostgreSQL - <a href="https://ohkrab.dev">Oh! Krab!</a> 🦀.
+It&rsquo;s far from perfect but I needed to start somewhere. There&rsquo;s more to come.</p>
+<h2 id="why">Why?</h2>
+<p>So, the natural question is why I&rsquo;ve created this in the first place. There are a few reasons.</p>
+<p>First, I like experimenting with different technologies and sometimes I would like to compare multiple solutions that use PostgreSQL as a database, but writing migrations more than once in different frameworks or programming languages is a pain.
+Managing database through other framework migration system is not an option for me.</p>
+<p>Secondly, I get hired from time to time to do small jobs in PostgreSQL (queries, schema design, etc.) and very often I don&rsquo;t have access to the full project so I need to mock everything.
+In those situations I would write some Bash scripts that mimic this particular scenario - boooooring!</p>
+<p>Another use case is when I do workshops or teach about PostgreSQL - I really want to work with pure SQL in a manageable fashion, frameworks and <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">ORMs</a> would only make the image blurry.</p>
+<p>Last, but not least, is the old project that I&rsquo;ve worked on. It was written in <em>Ruby on Rails</em> and used <em>Apartment</em> gem to manage <a href="https://en.wikipedia.org/wiki/Multitenancy">tenants</a>
+(for non-Rubists: Apartment is a library that allows to have different strategies for multitenancy and integrates with Rails ORM).
+It perfectly matched our scenario since we had small number of tenants and we knew it wouldn&rsquo;t grow too much so we went with schema-based approach (single database with 1 schema per each tenant and public schema for other stuff).
+So, what&rsquo;s wrong with the <em>Apartment</em> then? Well, it&rsquo;s not maintained anymore and if I remember correctly you couldn&rsquo;t upgrade PostgreSQL above version 10 because the way it works is by creating a dump of a database and restoring it to a new schema
+and in PostgreSQL 11 dump behavior has changed a little and that prevented <em>Apartment</em> to create a valid restore - I think this issue was later addressed by someone in the community with a workaround but I&rsquo;ve never tested it.
+In the past I did a presentation on how to replace <em>Apartment</em> with simple SQL using event triggers so feel free to check it out: <a href="https://qbart.dev/posts/2019/schema-based-multi-tenancy-in-postgresql/">Schema-based multi-tenancy in PostgreSQL</a> - this should work in simple use cases, but it depends what do you need.</p>
+<p>It&rsquo;s hard to write about other reasons since &ldquo;Krab&rdquo; is too small right now compared to what I have planned but I think I will expand on the topic in the future releases as more features are added.</p>
+<h2 id="introduction-to-the-software-itself">Introduction to the software itself</h2>
+<p>I&rsquo;ve tried my best to provide very detailed documentation for <a href="https://ohkrab.dev">Krab</a> so you can start there but if anything is unclear, please let me know so I can make it better.</p>
+<p>Currently Krab only supports one feature - <a href="https://en.wikipedia.org/wiki/Schema_migration">migrations</a> - which again is not polished enough to my liking but it&rsquo;s a starting point.</p>
+<p>Let&rsquo;s start by defining a <code>docker-compose.yml</code> file so we can run database:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6">version</span>: <span style="color:#f1fa8c">&#34;3&#34;</span>
+<span style="color:#ff79c6">services</span>:
+  <span style="color:#ff79c6">pg</span>:
+    <span style="color:#ff79c6">image</span>: postgres:12.3-alpine
+    <span style="color:#ff79c6">restart</span>: always
+    <span style="color:#ff79c6">ports</span>:
+      - <span style="color:#bd93f9">5432</span>:<span style="color:#bd93f9">5432</span>
+    <span style="color:#ff79c6">environment</span>:
+      <span style="color:#ff79c6">POSTGRES_PASSWORD</span>: secret
+      <span style="color:#ff79c6">POSTGRES_USER</span>: krab
+      <span style="color:#ff79c6">POSTGRES_DB</span>: krab
+</code></pre></div><p>Then start the container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up
+</code></pre></div><p>Next, install the Krab, possible options of how to do it are <a href="https://ohkrab.dev/docs/get_started/installation/">here</a>. For local development prefer <code>asdf</code> version.
+Try in your terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">krab -version
+</code></pre></div><p>It should print the active version, e.g.: <code>0.2.4</code>.</p>
+<p>Then we define the <a href="https://ohkrab.dev/docs/configuration/overview/">configuration</a>, it can be done in separate files as your project grows but for now let&rsquo;s create one file <code>default.krab.hcl</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#6272a4"># 1
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">migration</span> <span style="color:#f1fa8c">&#34;create_animals&#34;</span> {
+  version <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;20200707_1703&#34;</span>
+
+  <span style="color:#ff79c6">up</span> {
+	sql <span style="color:#ff79c6">=</span> &lt;&lt;<span style="color:#ff79c6">SQL</span>
+      <span style="color:#ff79c6">CREATE</span> <span style="color:#ff79c6">TABLE</span> <span style="color:#ff79c6">animals</span>(
+        <span style="color:#ff79c6">id</span>   <span style="color:#ff79c6">BIGINT</span> <span style="color:#ff79c6">GENERATED</span> <span style="color:#ff79c6">BY</span> <span style="color:#ff79c6">DEFAULT</span> <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">IDENTITY</span>,
+        <span style="color:#ff79c6">name</span> <span style="color:#ff79c6">VARCHAR</span>
+      )
+    <span style="color:#ff79c6">SQL</span>
+  }
+
+  <span style="color:#ff79c6">down</span> {
+	sql <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DROP TABLE animals&#34;</span>
+  }
+}<span style="color:#6272a4">
+</span><span style="color:#6272a4">
+</span><span style="color:#6272a4"># 2
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">migration</span> <span style="color:#f1fa8c">&#34;seed_animals&#34;</span> {
+  version <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;20200707_1704&#34;</span>
+
+  <span style="color:#ff79c6">up</span> {
+	sql <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;INSERT INTO animals(name) VALUES (&#39;Turtle&#39;)&#34;</span>
+  }
+
+  <span style="color:#ff79c6">down</span> {
+    sql <span style="color:#ff79c6">=</span> &#34;DELETE FROM animals WHERE name <span style="color:#ff79c6">=</span> &#39;<span style="color:#ff79c6">Turtle</span>&#39;&#34;
+  }
+}<span style="color:#6272a4">
+</span><span style="color:#6272a4">
+</span><span style="color:#6272a4"># define the migration set
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">migration_set</span> <span style="color:#f1fa8c">&#34;default&#34;</span> {
+  migrations <span style="color:#ff79c6">=</span> [
+    <span style="color:#ff79c6">migration</span>.<span style="color:#ff79c6">create_animals</span>,
+    <span style="color:#ff79c6">migration</span>.<span style="color:#ff79c6">seed_animals</span>,
+  ]
+}
+</code></pre></div><p>The file above contains two <a href="https://ohkrab.dev/docs/configuration/resources/migration/">migration</a> resources and one <a href="https://ohkrab.dev/docs/configuration/resources/migration_set/">migration set</a> resource.</p>
+<p>Because we defined <code>default</code> migration set in config files, you should see it as a subcommand:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">krab migrate up
+<span style="color:#6272a4"># it won&#39;t run migrations because &lt;set&gt; argument is needed,</span>
+<span style="color:#6272a4"># instead it will print the subcommands</span>
+</code></pre></div><p>So the output will be the list of available sets to migrate:</p>
+<pre><code>This command is accessed by using one of the subcommands below.
+
+Subcommands:
+    default    Migrate `default` up
+</code></pre><p>Let&rsquo;s run the migrations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">DATABASE_URL</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;postgres://krab:secret@localhost:5432/krab?sslmode=disable&#34;</span> <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  krab migrate up default
+</code></pre></div><p><code>DATABASE_URL</code> environment variable is required, read more <a href="https://ohkrab.dev/docs/configuration/environment_variables/">here</a>.</p>
+<p>It&rsquo;s important to note that <a href="https://ohkrab.dev/docs/commands/migrate/up/">migrate up</a> command will execute migrations in the order defined by the migration set and not by their lexicographical scope - which is different than what most alternatives do.
+Version here only acts as a unique identifier, its &ldquo;sortability&rdquo; does not matter.</p>
+<p>Now, let&rsquo;s connect to <code>psql</code> and verify everything:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">psql <span style="color:#f1fa8c">&#34;postgres://krab:secret@localhost:5432/krab?sslmode=disable&#34;</span> 
+</code></pre></div><p>All migrations should be there:</p>
+<pre><code>krab=# select * from schema_migrations;
+    version    
+---------------
+ 20200707_1703
+ 20200707_1704
+(2 rows)
+</code></pre><p>As well as our turtle 🐢</p>
+<pre><code>krab=# select * from animals;
+ id |  name
+----+--------
+  1 | Turtle
+(1 row)
+</code></pre><p>Finally, let&rsquo;s test the <a href="https://ohkrab.dev/docs/commands/migrate/down/">migrate down</a> command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">DATABASE_URL</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;postgres://krab:secret@localhost:5432/krab?sslmode=disable&#34;</span> <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  krab migrate down default 20200707_1704
+</code></pre></div><p>And verify it:</p>
+<pre><code>krab=# select * from schema_migrations;
+    version    
+---------------
+ 20200707_1703
+(1 row)
+</code></pre><p>And the turtle 🐢 is gone:</p>
+<pre><code>krab=# select * from animals;
+ id | name 
+----+------
+(0 rows)
+</code></pre><p>You can stop the docker container now.</p>
+<h2 id="production">Production?</h2>
+<p>There are still some things that I would like to improve so I would be a bit hesitant to use that in production environment, unless you know what you are doing.
+One of the reason is that currently all migrations run within transaction which will cause trouble when running concurrent operations like:
+<code>CREATE INDEX CONCURRENTLY ...</code> - I need to allow to specify option like <code>transaction = false</code> for migration resource so that everything works.</p>
+<p>For now treat it as a toy and provide feedback if you wish.</p>
+<h2 id="roadmap-for-the-nearest-future">Roadmap for the nearest future</h2>
+<p>In the upcoming releases I would like to tackle these things:</p>
+<ul>
+<li>adding more customization around migration execution (e.g. transactions)</li>
+<li>improving existing CLI (better progress tracking, config generation)</li>
+<li>building some DSL for migrations (not only raw SQL)</li>
+<li>providing mini test framework (yes, I need that so much)</li>
+<li>adding an ability to create custom actions with arguments</li>
+</ul>
+]]></content></item><item><title>Publication: Boosting File Uploads With Amazon S3 Transfer Acceleration</title><link>https://qbart.dev/posts/2020/publication-boosting-file-uploads-with-amazon-s3-transfer-acceleration/</link><pubDate>Mon, 24 Feb 2020 13:00:00 +0200</pubDate><guid>https://qbart.dev/posts/2020/publication-boosting-file-uploads-with-amazon-s3-transfer-acceleration/</guid><description>Article about using Amazon S3 Transfer Acceleration.</description><content type="html"><![CDATA[<p><a href="https://selleo.com/blog/boosting-file-uploads-with-amazon-s3-transfer-acceleration?utm_source=qbart.dev&amp;utm_campaign=qbart.dev">Article</a> about using Amazon S3 Transfer Acceleration.</p>
 ]]></content></item><item><title>Schema based multi-tenancy in PostgreSQL</title><link>https://qbart.dev/posts/2019/schema-based-multi-tenancy-in-postgresql/</link><pubDate>Wed, 09 Oct 2019 13:00:00 +0200</pubDate><guid>https://qbart.dev/posts/2019/schema-based-multi-tenancy-in-postgresql/</guid><description>Presentation about multi-tenancy in pure PostgreSQL using event triggers.</description><content type="html">&lt;p>&lt;a href="https://docs.google.com/presentation/d/1SQ0sXIPS7sP8n6HKgrRFdniBaUX-dqpxsYmEtpZPbyY/edit?usp=sharing">Presentation&lt;/a> about multi-tenancy in pure PostgreSQL using event triggers.&lt;/p></content></item><item><title>Experimenting With Github Actions (beta)</title><link>https://qbart.dev/posts/2019/experimenting-with-github-actions-beta/</link><pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate><guid>https://qbart.dev/posts/2019/experimenting-with-github-actions-beta/</guid><description>This article was originally published here.
 With the upcoming new GitHub Actions feature, I was very excited to test it, so I immediately signed up for the beta access and finally my invitation had been accepted.
 The reason for my excitement mainly comes from my current project where I am mostly responsible for managing the infrastructure in AWS (Terraform) and backend development (Ruby on Rails) — if I have time for it.</description><content type="html"><![CDATA[<p>This article was originally published <a href="https://medium.com/selleo/experimenting-with-github-actions-beta-760e61fab0e1">here</a>.</p>
