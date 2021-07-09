@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Release: Oh! Krab! A PostgreSQL tool written in Go based on HCL"
 date: 2021-07-07T01:32:00+02:00
 tags:
