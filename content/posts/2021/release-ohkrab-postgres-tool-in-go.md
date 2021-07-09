@@ -218,5 +218,5 @@ In the upcoming releases I would like to tackle these things:
 - improving existing CLI (better progress tracking, config generation)
 - building some DSL for migrations (not only raw SQL)
 - providing mini test framework (yes, I need that so much)
-- adding an ability to create custom actions (with arguments) - that's a big one
+- adding an ability to create custom actions with arguments
 
