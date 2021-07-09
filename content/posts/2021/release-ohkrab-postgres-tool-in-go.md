@@ -11,29 +11,29 @@ tags:
 - tool
 ---
 
-I am happy to announce that I finally finished [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product) of my tool for PostgreSQL - [Oh! Krab!](https://ohkrab.dev) 🦀.
-It's far from perfect but I needed to start somewhere, more to come.
+I am happy to announce that I have finally finished [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product) of my tool for PostgreSQL - [Oh! Krab!](https://ohkrab.dev) 🦀.
+It's far from perfect but I needed to start somewhere. There's more to come.
 
 ## Why?
 
-So the natural question is why I've created this in the first place. There are few reasons.
+So, the natural question is why I've created this in the first place. There are a few reasons.
 
-First, I like experimenting with different technologies and sometimes I would like to compare multiple solutions that use PostgreSQL as a database but writing migrations more than once in different frameworks or programming languages is a pain.
+First, I like experimenting with different technologies and sometimes I would like to compare multiple solutions that use PostgreSQL as a database, but writing migrations more than once in different frameworks or programming languages is a pain.
 Managing database through other framework migration system is not an option for me.
 
-Secondly I get hired from time to time to do small jobs in PostgreSQL (queries, schema design, etc.) and very often I don't have access to the full project so I need to mock everything.
+Secondly, I get hired from time to time to do small jobs in PostgreSQL (queries, schema design, etc.) and very often I don't have access to the full project so I need to mock everything.
 In those situations I would write some Bash scripts that mimic this particular scenario - boooooring!
 
-Another use case is when I do workshops or teach about the PostgreSQL I really want to work with pure SQL in a managable fashion, frameworks and [ORMs](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) would only make the image blurry.
+Another use case is when I do workshops or teach about PostgreSQL - I really want to work with pure SQL in a manageable fashion, frameworks and [ORMs](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) would only make the image blurry.
 
-Last but not least is the old project that I worked on. Project was written in *Ruby on Rails* and used *Apartment* gem to manage [tenants](https://en.wikipedia.org/wiki/Multitenancy)
-(for non-Rubists: Apartment is a library that allows to have different strategies for mutlitenancy and integrates with Rails ORM).
-It perfectly matched our scenario since we had small number of tenants and we knew it won't grow too much so we went with schema-based approach (single database with 1 schema per each tenant and public schema for other stuff).
-So what's wrong with the *Apartment* then? Well, it's not maintained anymore and if I remember correctly you couldn't upgrade PostgreSQL above version 10 because the way it works is by creating a dump of a database and restoring it to a new schema
-and in PostgreSQL 11 dump behavior has changed a little that prevented *Apartment* to create a valid restore - I think this issue was later addressed by someone in the community with a workaround but I've never tested it.
-In the past I did a presentation on how to replace *Apartment* with simple SQL using event triggers so feel free to check it out: [Schema-based multi-tenancy in PostgreSQL]({{< ref "posts/2019/slides-schema-based-multi-tenancy-in-postgresql" >}}) - this should work in simple use cases, it depends what do you need.
+Last, but not least, is the old project that I've worked on. It was written in *Ruby on Rails* and used *Apartment* gem to manage [tenants](https://en.wikipedia.org/wiki/Multitenancy)
+(for non-Rubists: Apartment is a library that allows to have different strategies for multitenancy and integrates with Rails ORM).
+It perfectly matched our scenario since we had small number of tenants and we knew it wouldn't grow too much so we went with schema-based approach (single database with 1 schema per each tenant and public schema for other stuff).
+So, what's wrong with the *Apartment* then? Well, it's not maintained anymore and if I remember correctly you couldn't upgrade PostgreSQL above version 10 because the way it works is by creating a dump of a database and restoring it to a new schema
+and in PostgreSQL 11 dump behavior has changed a little and that prevented *Apartment* to create a valid restore - I think this issue was later addressed by someone in the community with a workaround but I've never tested it.
+In the past I did a presentation on how to replace *Apartment* with simple SQL using event triggers so feel free to check it out: [Schema-based multi-tenancy in PostgreSQL]({{< ref "posts/2019/slides-schema-based-multi-tenancy-in-postgresql" >}}) - this should work in simple use cases, but it depends what do you need.
 
-It's hard to write about other reasons since "Krab" is too small right now compared to what I have planned but I think I will expand the topic in the future releases as more features are added.
+It's hard to write about other reasons since "Krab" is too small right now compared to what I have planned but I think I will expand on the topic in the future releases as more features are added.
 
 ## Introduction to the software itself
 
@@ -72,7 +72,7 @@ krab -version
 
 It should print the active version, e.g.: `0.2.4`.
 
-Then we define the [configuration](https://ohkrab.dev/docs/configuration/overview/), it can be done in seperate files as your project grows but for now let's create one file `default.krab.hcl`:
+Then we define the [configuration](https://ohkrab.dev/docs/configuration/overview/), it can be done in separate files as your project grows but for now let's create one file `default.krab.hcl`:
 
 ```hcl
 # 1
@@ -115,7 +115,7 @@ migration_set "default" {
 }
 ```
 
-File above contains two [migration](https://ohkrab.dev/docs/configuration/resources/migration/) resources and one [migration set](https://ohkrab.dev/docs/configuration/resources/migration_set/) resource.
+The file above contains two [migration](https://ohkrab.dev/docs/configuration/resources/migration/) resources and one [migration set](https://ohkrab.dev/docs/configuration/resources/migration_set/) resource.
 
 Because we defined `default` migration set in config files, you should see it as a subcommand:
 
@@ -143,7 +143,7 @@ DATABASE_URL="postgres://krab:secret@localhost:5432/krab?sslmode=disable" \
 
 `DATABASE_URL` environment variable is required, read more [here](https://ohkrab.dev/docs/configuration/environment_variables/).
 
-It's important to note that [migrate up](https://ohkrab.dev/docs/commands/migrate/up/) command will execute migrations in the order defined by the migration set and not by their lexicographical scope - which is different than most alternatives do.
+It's important to note that [migrate up](https://ohkrab.dev/docs/commands/migrate/up/) command will execute migrations in the order defined by the migration set and not by their lexicographical scope - which is different than what most alternatives do.
 Version here only acts as a unique identifier, its "sortability" does not matter.
 
 
@@ -174,7 +174,7 @@ krab=# select * from animals;
 (1 row)
 ```
 
-Finally let's test the [migrate down](https://ohkrab.dev/docs/commands/migrate/down/) command:
+Finally, let's test the [migrate down](https://ohkrab.dev/docs/commands/migrate/down/) command:
 
 ```bash
 DATABASE_URL="postgres://krab:secret@localhost:5432/krab?sslmode=disable" \
@@ -204,11 +204,11 @@ You can stop the docker container now.
 
 ## Production?
 
-There are still some things I would like to improve so I would be a bit hesitant to use that in production environment, unless you know what you are doing.
+There are still some things that I would like to improve so I would be a bit hesitant to use that in production environment, unless you know what you are doing.
 One of the reason is that currently all migrations run within transaction which will cause trouble when running concurrent operations like:
-`CREATE INDEX CONCURRENTLY ...` - I need to allow to specify option like `transaction = false` for migration resource so everything works.
+`CREATE INDEX CONCURRENTLY ...` - I need to allow to specify option like `transaction = false` for migration resource so that everything works.
 
-For now treat it as a toy and provide the feedback if you wish.
+For now treat it as a toy and provide feedback if you wish.
 
 ## Roadmap for the nearest future
 
