@@ -26,6 +26,13 @@ title: "Open source projects"
 >}}
 
 {{< project
+    icon="fas fa-database"
+    url="https://github.com/qbart/cyclone"
+    summary="Wrapper around radix (Redis) library."
+    tag="Go"
+>}}
+
+{{< project
     icon="fas fa-vial"
     url="https://github.com/qbart/rpi-boardgame-turns"
     summary="App designed for Raspberry PI for measuring turns when playing board games."
