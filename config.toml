@@ -66,4 +66,8 @@ name = "Open source"
 url = "/projects/"
 weight = 30
 
+[[menu.main]]
+name = "Bookmars"
+url = "https://b.qbart.dev"
+weight = 40
 

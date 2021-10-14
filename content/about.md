@@ -8,6 +8,7 @@ keywords:
 - databases
 - devops
 - postgres
+- postgresql
 - redis
 - terraform
 - consul
@@ -20,8 +21,6 @@ keywords:
 - crystal
 - rails
 - sinatra
-- elixir
-- phoenix
 - softkiwi
 - gamedev
 - go
@@ -29,7 +28,6 @@ keywords:
 - c++
 - c#
 - lua
-- ohoh
 - ohkrab
 - krab
 tags:
