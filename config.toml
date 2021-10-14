@@ -67,7 +67,7 @@ url = "/projects/"
 weight = 30
 
 [[menu.main]]
-name = "Bookmars"
+name = "Bookmarks"
 url = "https://b.qbart.dev"
 weight = 40
 
