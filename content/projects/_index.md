@@ -6,8 +6,50 @@ title: "Open source projects"
 
 {{< project
     icon="fa fa-terminal"
+    url="https://github.com/qbart/diye"
+    summary="Opinionated toolkit for 3D-based applications and games (Vulkan based)"
+    tag="C++"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
+    url="https://github.com/qbart/opengl"
+    summary="Old rendering backend for my DIYE project (OpenGL based)"
+    tag="C++"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
+    url="https://github.com/SoftKiwiGames/hashira"
+    summary="WebAssembly 2D map renderer."
+    tag="Go"
+>}}
+
+{{< project
+    icon="fa fa-cloud"
+    url="https://github.com/Selleo/terraform-aws-modules"
+    summary="Easy to use Terraform modules for AWS."
+    tag="Terraform"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
+    url="https://github.com/qbart/risky"
+    summary="Go library that favors defaults over errors when parsing input."
+    tag="Go"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
+    url="https://github.com/qbart/go-web-template"
+    summary="Go web template for rendering HTML on the server "
+    tag="Go"
+>}}
+
+{{< project
+    icon="fa fa-terminal"
     url="https://github.com/ohkrab/krab"
-    summary="Database tool. WIP."
+    summary="Database tool."
     tag="Go"
 >}}
 

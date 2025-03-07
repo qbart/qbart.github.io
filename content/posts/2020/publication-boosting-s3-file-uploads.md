@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Publication: Boosting File Uploads With Amazon S3 Transfer Acceleration"
+title: "Boosting File Uploads With Amazon S3 Transfer Acceleration"
 date: 2020-02-24T13:00:00+02:00
 tags:
 - aws
