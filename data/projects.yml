@@ -1,0 +1,211 @@
+projects:
+  - name: "DIYE"
+    url: "https://github.com/qbart/diye"
+    text: "Opinionated toolkit for 3D-based applications and games (Vulkan based)."
+    pinned: true
+    tags:
+      - c++
+      - vulkan
+      - rendering
+  - name: "OpenGL"
+    url: "https://github.com/qbart/opengl"
+    text: "Old rendering backend for my DIYE project (OpenGL based)."
+    tags:
+      - c++
+      - opengl
+      - rendering
+  - name: "Hashira"
+    url: "https://github.com/SoftKiwiGames/hashira"
+    text: "WebAssembly 2D map renderer."
+    tags:
+      - go
+      - webassembly
+      - rendering
+      - webgl
+  - name: "Terraform AWS Modules"
+    url: "https://github.com/Selleo/terraform-aws-modules"
+    text: "Setup secure AWS infrastructure with Terraform."
+    tags:
+      - terraform
+      - aws
+  - name: "Risky"
+    url: "https://github.com/qbart/risky"
+    text: "Go library that favors defaults over errors when parsing input."
+    tags:
+      - go
+      - parsing
+      - input
+  - name: "Go Web Template"
+    url: "https://github.com/qbart/go-web-template"
+    text: "Go web template for rendering HTML on the server."
+    tags:
+      - go
+      - web
+      - template
+      - html
+      - server
+      - ui
+      - http
+  - name: "Krab"
+    url: "https://github.com/ohkrab/krab"
+    text: "Database tool."
+    tags:
+      - go
+      - database
+      - postgresql
+  - name: "Timelog"
+    url: "https://github.com/qbart/timelog"
+    text: "Time logging in CLI"
+    tags:
+      - go
+      - cli
+      - time
+      - logging
+  - name: "Ser"
+    url: "https://github.com/qbart/ser"
+    text: "Ser is a small monitoring tool for your AWS instances, targets groups, load balancers, ECS."
+    tags:
+      - go
+      - aws
+      - monitoring
+      - ecs
+      - loadbalancer
+  - name: "Cyclone"
+    url: "https://github.com/qbart/cyclone"
+    text: "Wrapper around radix (Redis) library."
+    tags:
+      - go
+      - database
+      - redis
+  - name: "Raspberry PI Boardgame Turns"
+    url: "https://github.com/qbart/rpi-boardgame-turns"
+    text: "App designed for Raspberry PI for measuring turns when playing board games."
+    tags:
+      - elixir
+      - boardgame
+      - rpi
+  - name: "BMO"
+    url: "https://github.com/qbart/bmo"
+    text: "IoT home for controlling Yeelight"
+    tags:
+      - go
+      - iot
+      - yeelight
+      - rpi
+  - name: "PG Misc"
+    url: "https://github.com/qbart/pg-misc"
+    text: "Miscellaneous utilities for PostgreSQL."
+    tags:
+      - postgresql
+      - database
+      - utility
+      - misc
+  - name: "Workshop DB 01"
+    url: "https://github.com/qbart/workshop-db-01"
+    text: "Workshop for Rails/PostgreSQL with the focus on Active Relations."
+    tags:
+      - postgresql
+      - database
+      - workshop
+  - name: "Workshop DB 02"
+    url: "https://github.com/qbart/workshop-db-02"
+    text: "Workshop with inner, left, right, full and cross join."
+    tags:
+      - postgresql
+      - database
+      - workshop
+  - name: "Workshop DB 03"
+    url: "https://github.com/qbart/workshop-db-03"
+    text: "Workshop with CTEs and window functions."
+    tags:
+      - postgresql
+      - database
+      - workshop
+  - name: "Workshop DB 04"
+    url: "https://github.com/qbart/workshop-db-04"
+    text: "Workshop with database views."
+    tags:
+      - postgresql
+      - database
+      - workshop
+  - name: "Elixir Workshop 01"
+    url: "https://github.com/qbart/elixir-workshop-01"
+    text: "Small workshop with Elixir basics."
+    tags:
+      - elixir
+      - workshop
+  - name: "Crystular"
+    url: "https://github.com/qbart/crystular"
+    text: "Regular expression tester inspired by Rubular."
+    tags:
+      - crystal
+      - regex
+      - tester
+      - rubular
+  - name: "Kemal Healthcheck Handler"
+    url: "https://github.com/qbart/kemal-healthcheck-handler"
+    text: "Crystal shard for Kemal that exposes healthcheck endpoint for AWS load balancer."
+    tags:
+      - crystal
+      - kemal
+      - healthcheck
+      - aws
+  - name: "Dotenvs.cr"
+    url: "https://github.com/qbart/dotenvs-cr"
+    text: "Crystal shard that loads dotenv files."
+    tags:
+      - crystal
+      - dotenv
+  - name: "Crystal Workshop 02"
+    url: "https://github.com/qbart/crystal-workshop-02"
+    text: "Workshop about creating utility to unfurl links from webpages with the ability to extend it with custom logic."
+    tags:
+      - crystal
+      - workshop
+      - links
+      - webpages
+  - name: "Rack Synctime"
+    url: "https://github.com/qbart/rack-synctime"
+    text: "Simple Rack middleware that returns sync time (time when request started) in HTTP headers."
+    tags:
+      - ruby
+      - rack
+      - middleware
+      - sync
+      - time
+      - http
+  - name: "Time Humanizer"
+    url: "https://github.com/qbart/time_humanizer"
+    text: "Gem that formats seconds to readable time format i.e. 8h05m and vice versa."
+    tags:
+      - ruby
+      - time
+  - name: "Handy Toolbox"
+    url: "https://github.com/qbart/handy_toolbox"
+    text: "HandyToolbox gem is a text based user interface that will help you with every day tasks."
+    tags:
+      - ruby
+      - toolbox
+      - cli
+  - name: "Clamav Scanner"
+    url: "https://github.com/qbart/clamav-scanner-rb"
+    text: "Scans your server using (ClamAV)."
+    tags:
+      - ruby
+      - clamav
+      - antivirus
+  - name: "Android Extensions"
+    url: "https://github.com/qbart/android-extensions"
+    text: "Extensions for OrmLite library and GSON."
+    tags:
+      - java
+      - android
+      - orm
+      - json
+  - name: "iOS Utils"
+    url: "https://github.com/qbart/ios-utils"
+    text: "Ruby on Rails like I18n for iOS and relative time span formatting."
+    tags:
+      - objc
+      - ios
+      - i18n

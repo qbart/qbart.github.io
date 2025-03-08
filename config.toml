@@ -23,21 +23,14 @@ posts = "/:section/:year/:slug"
 
 
 [Params]
-customCSS = ["css/custom.css"]
-dateform        = "Jan 2, 2006"
-dateformShort   = "Jan 2"
-dateformNum     = "2006-01-02"
-dateformNumTime = "2006-01-02 15:04 -0700"
-code_copy_button = true
-homeSubtitle = "Bartłomiej Wójtowicz - a software engineer"
-
 # seo
-description = "A Tech Blog"
+description = "Engineering blog of Bartłomiej Wójtowicz. CTO at Selleo Labs. Co-founder of Soft Kiwi Games."
 
 # Appearance settings
-theme = 'light'
+theme = 'auto'
 colorPalette = 'default'
 hideHeader = false
+readTime = true
 
 # Intro on main page, content is markdown
 homeIntroTitle = 'Hello!'
@@ -54,20 +47,25 @@ Together with my cousin, we run a small indie game development studio called [So
 where we bring our passion for gaming and software development to life. 
 """
 
-# Collection to display on home
+showFooter = true
+footerContent = "\"The more I learn, the more I realize how much I don't know.\""
+
 homeCollectionTitle = 'Posts'
 homeCollection = 'posts'
 
-# Lists parameters
 paginationSize = 100
 listSummaries = false
-listDateFormat = '2 Jan 2006'
+listDateFormat = 'Jan 2006'
+
 
 breadcrumbs = false
+math = true
+autonumber = false
+toc = true
 
 [[Params.Social]]
-name = "email"
-url = "mailto:qbartATprotonmail.com"
+name = "gmail"
+url = "mailto:bw@softkiwi.games?subject=Business inquiry"
 
 [[Params.Social]]
 name = "github"
@@ -107,3 +105,12 @@ url = "/tags"
 [markup]
 [markup.highlight]
 style = 'algol'
+
+[params.giscus]
+enable = true
+repo = "qbart/qbart.github.io"
+repoid = "id"
+category = "Announcements"
+categoryid = "categoryId"
+mapping = "pathname"
+theme = "preferred_color_scheme" 
