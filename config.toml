@@ -76,13 +76,20 @@ name = "linkedin"
 url = "https://www.linkedin.com/in/bartlomiej-wojtowicz-24b58b1b"
 
 [[Params.Social]]
+name = "pinterest"
+url = "https://pinterest.com/bartlomiejwojtowicz/"
+
+[[Params.Social]]
 name = "x"
 url = "https://x.com/softkiwi"
 
 [[Params.Social]]
-name = "pinterest"
-url = "https://pinterest.com/bartlomiejwojtowicz/"
+name = "youtube"
+url = "https://www.youtube.com/@SoftKiwiGames"
 
+[[Params.Social]]
+name = "facebook"
+url = "https://www.facebook.com/softkiwigames"
 
 # Main menu pages
 [[Params.menu]]
