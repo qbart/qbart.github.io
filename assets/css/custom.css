@@ -40,6 +40,34 @@ pre { background-color: #282a36; }  */
   width: 100%;
 }
 
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.featured-card {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.featured-image-container {
+  flex-shrink: 0;
+}
+
+.featured-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
 /* .project-title a {
   color: #0366d6;
   text-decoration: none;

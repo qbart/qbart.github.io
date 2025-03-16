@@ -2,7 +2,11 @@ projects:
   - name: "DIYE"
     url: "https://github.com/qbart/diye"
     text: "Opinionated toolkit for 3D-based applications and games (Vulkan based)."
+    featured_text: "Vulkan toolkit for 3D-based applications."
     pinned: true
+    featured: true
+    image_resize: "x96"
+    image: "/images/featured/diye.png"
     tags:
       - c++
       - vulkan
@@ -17,6 +21,10 @@ projects:
   - name: "Hashira"
     url: "https://github.com/SoftKiwiGames/hashira"
     text: "WebAssembly 2D map renderer."
+    featured_text: "WebAssembly 2D map renderer."
+    featured: true
+    image_resize: "96x"
+    image: "/images/featured/hashira.png"
     tags:
       - go
       - webassembly
