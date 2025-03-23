@@ -30,9 +30,13 @@ projects:
       - webassembly
       - rendering
       - webgl
-  - name: "Terraform AWS Modules"
+  - name: "Terraform AWS"
     url: "https://github.com/Selleo/terraform-aws-modules"
     text: "Setup secure AWS infrastructure with Terraform."
+    featured_text: "Secure AWS infrastructure."
+    featured: true
+    image_resize: "x96"
+    image: "/images/featured/aws.png"
     tags:
       - terraform
       - aws
@@ -57,6 +61,11 @@ projects:
   - name: "Krab"
     url: "https://github.com/ohkrab/krab"
     text: "Database tool."
+    featured_text: "Database management for elephants."
+    featured: true
+    pinned: true
+    image_resize: "x96"
+    image: "/images/featured/krab.png"
     tags:
       - go
       - database
