@@ -40,6 +40,12 @@ projects:
     tags:
       - terraform
       - aws
+  - name: "Expecto"
+    url: "https://github.com/qbart/expecto"
+    text: "Mini testing library for Go based on stdlib. Fails early with colored output."
+    tags:
+      - go
+      - testing
   - name: "Risky"
     url: "https://github.com/qbart/risky"
     text: "Go library that favors defaults over errors when parsing input."
