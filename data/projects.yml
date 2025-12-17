@@ -4,7 +4,7 @@ projects:
     text: "Opinionated toolkit for 3D-based applications and games (Vulkan based)."
     featured_text: "Vulkan toolkit for 3D-based applications."
     featured: true
-    image_resize: "x96"
+    image_resize: "x192"
     image: "/images/featured/diye.png"
     tag: C++/Vulkan
     tags:
@@ -14,9 +14,9 @@ projects:
   - name: "Hashira"
     url: "https://github.com/SoftKiwiGames/hashira"
     text: "WebAssembly 2D map renderer."
-    featured_text: "WebAssembly 2D map renderer."
+    featured_text: "Experimental WebAssembly 2D map renderer."
     featured: true
-    image_resize: "96x"
+    image_resize: "286x"
     image: "/images/featured/hashira.png"
     tag: Go
     tags:
@@ -27,7 +27,7 @@ projects:
   - name: "Terraform AWS"
     url: "https://github.com/Selleo/terraform-aws-modules"
     text: "Setup secure AWS infrastructure with Terraform."
-    featured_text: "Secure AWS infrastructure."
+    featured_text: "AWS infrastructure designed to be secured by default."
     featured: true
     image_resize: "x96"
     image: "/images/featured/aws.png"
