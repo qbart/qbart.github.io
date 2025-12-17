@@ -33,18 +33,16 @@ hideHeader = false
 readTime = true
 
 # Intro on main page, content is markdown
-homeIntroTitle = 'Hello!'
+homeIntroTitle = 'Hello there!'
 homeIntroContent = """
-My name is Bartłomiej Wójtowicz, but you can call me Bart for short.
-I am currently the CTO at [Selleo Labs](https://selleo.com?utm_source=qbart.dev&utm_campaign=qbart.dev),
-where we support our clients with business and software development.
-As a passionate software engineer, I am always eager to learn new things and expand my knowledge.
-In my free time, I enjoy various hobbies such as recording sounds of nature, learn-playing the piano,
-and honing my drawing skills. Animation enthusiast, both films and shows.
-While I occasionally play video games, my true fascination lies in understanding the low-level magic that happens under the hood.
-I am particularly interested in the areas of rendering, architecture, game design, AI, physics, and math.
+My name is Bartłomiej Wójtowicz, currently the CTO at [Selleo Labs](https://selleo.com?utm_source=qbart.dev&utm_campaign=qbart.dev),
+where we support our clients with business and product development.
+As an engineer I am always eager to grow and build new things.
+In my free time I learn how to play piano, hone my so-so drawing skills and enjoy good board games and squash.
+Animation enthusiast in every form.
+While I occasionally play video games, I'm mostly interested in the magic behind - rendering, game design, AI, physics and math.
 Together with my cousin, we run a small indie game development studio called [Soft Kiwi Games](https://softkiwi.games),
-where we bring our passion for gaming and software development to life.
+where we bring our passion for gaming to life.
 """
 
 footerContent = "\"The more I learn, the more I realize how much I don't know.\""
@@ -64,8 +62,8 @@ toc = true
 followLink = "https://www.linkedin.com/in/bart%C5%82omiej-w%C3%B3jtowicz/"
 
 [[Params.Social]]
-name = "gmail"
-url = "mailto:bw@softkiwi.games?subject=Business inquiry"
+name = "mail"
+url = "mailto:hi@qbart.dev?subject=Business inquiry"
 svg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>'
 
 [[Params.Social]]

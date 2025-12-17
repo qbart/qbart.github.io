@@ -241,32 +241,23 @@ section:last-child {
 
 .project-cover {
   aspect-ratio: 16/10;
-  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-cover::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: inherit;
 }
 
-.project-card:nth-child(1) .project-cover {
-  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-}
-
-.project-card:nth-child(2) .project-cover {
-  background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
-}
-
-.project-card:nth-child(3) .project-cover {
-  background: linear-gradient(135deg, #0f0f0f 0%, #2a2a2a 100%);
-}
-
-.project-card:nth-child(4) .project-cover {
-  background: linear-gradient(135deg, #1e272e 0%, #485460 100%);
+.project-cover img {
+  object-fit: cover;
+  display: block;
 }
 
 .project-info {

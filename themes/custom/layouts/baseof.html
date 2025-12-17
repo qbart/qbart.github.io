@@ -48,7 +48,7 @@
             <div class="project-cover">
               {{ $image := resources.Get .image }}
               {{ $image := $image.Resize .image_resize }}
-              {{ $image := $image.Crop "96x96" }}
+              <!-- { $image := $image.Crop "96x96" } -->
               <img src="{{ $image.RelPermalink }}" alt="{{ .name }}" class="project-image">
             </div>
             <div class="project-info">
