@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>S3 on Bartłomiej Wójtowicz</title>
+    <link>http://localhost:1313/tags/s3/</link>
+    <description>Recent content in S3 on Bartłomiej Wójtowicz</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <copyright>Bartłomiej Wójtowicz</copyright>
+    <lastBuildDate>Mon, 24 Feb 2020 13:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/s3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boosting File Uploads With Amazon S3 Transfer Acceleration</title>
+      <link>http://localhost:1313/posts/2020/boosting-file-uploads-with-amazon-s3-transfer-acceleration/</link>
+      <pubDate>Mon, 24 Feb 2020 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2020/boosting-file-uploads-with-amazon-s3-transfer-acceleration/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://selleo.com/blog/boosting-file-uploads-with-amazon-s3-transfer-acceleration?utm_source=qbart.dev&amp;amp;utm_campaign=qbart.dev&#34;&gt;Article&lt;/a&gt; about using Amazon S3 Transfer Acceleration.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

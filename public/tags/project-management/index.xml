@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project Management on Bartłomiej Wójtowicz</title>
+    <link>http://localhost:1313/tags/project-management/</link>
+    <description>Recent content in Project Management on Bartłomiej Wójtowicz</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <copyright>Bartłomiej Wójtowicz</copyright>
+    <lastBuildDate>Tue, 16 Jul 2013 13:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/project-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My MSc thesis: Dynamic gamification in project management</title>
+      <link>http://localhost:1313/posts/2013/my-msc-thesis-dynamic-gamification-in-project-management/</link>
+      <pubDate>Tue, 16 Jul 2013 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2013/my-msc-thesis-dynamic-gamification-in-project-management/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1NWPH4v1ttquvY0eUYoVEkLyxrFdHG0Thm8NiSzKD93c/edit?usp=sharing&#34;&gt;Presentation&lt;/a&gt; about my MSc Thesis. Full paper can be downloaded &lt;a href=&#34;http://users.pja.edu.pl/~mtrzaska/Files/PraceMagisterskie/130711-Wojtowicz.pdf&#34;&gt;here&lt;/a&gt; (only in Polish).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

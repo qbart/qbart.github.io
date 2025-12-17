@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Bartłomiej Wójtowicz</title>
+    <link>http://localhost:1313/tags/code/</link>
+    <description>Recent content in Code on Bartłomiej Wójtowicz</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <copyright>Bartłomiej Wójtowicz</copyright>
+    <lastBuildDate>Fri, 07 May 2021 13:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to rebuild existing software</title>
+      <link>http://localhost:1313/posts/2021/how-to-rebuild-existing-software/</link>
+      <pubDate>Fri, 07 May 2021 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2021/how-to-rebuild-existing-software/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://selleo.com/blog/fixing-and-updating-legacy-code?utm_source=qbart.dev&amp;amp;utm_campaign=qbart.dev&#34;&gt;Article here&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

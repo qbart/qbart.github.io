@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ci on Bartłomiej Wójtowicz</title>
+    <link>http://localhost:1313/tags/ci/</link>
+    <description>Recent content in Ci on Bartłomiej Wójtowicz</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <copyright>Bartłomiej Wójtowicz</copyright>
+    <lastBuildDate>Sat, 05 Jan 2019 18:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Experimenting With Github Actions (beta)</title>
+      <link>http://localhost:1313/posts/2019/experimenting-with-github-actions-beta/</link>
+      <pubDate>Sat, 05 Jan 2019 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2019/experimenting-with-github-actions-beta/</guid>
+      <description>&lt;p&gt;This article was originally published &lt;a href=&#34;https://medium.com/selleo/experimenting-with-github-actions-beta-760e61fab0e1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;With the upcoming new GitHub Actions feature, I was very excited to test it, so I immediately signed up for the beta access and finally my invitation had been accepted.&lt;/p&gt;&#xA;&lt;p&gt;The reason for my excitement mainly comes from my current project where I am mostly responsible for managing the infrastructure in AWS (Terraform) and backend development (Ruby on Rails) — if I have time for it. We also have a lot of PWA that we deploy to AWS Cloudfront so there is a constant need for automation (we still do some things manually but we are improving everyday). Our simplified pipeline looks like this:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
