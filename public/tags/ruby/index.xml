@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby on Bartłomiej Wójtowicz</title>
+    <link>http://localhost:1313/tags/ruby/</link>
+    <description>Recent content in Ruby on Bartłomiej Wójtowicz</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <copyright>Bartłomiej Wójtowicz</copyright>
+    <lastBuildDate>Wed, 27 Jun 2018 13:15:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slides: From Ruby to Crystal</title>
+      <link>http://localhost:1313/posts/2018/slides-from-ruby-to-crystal/</link>
+      <pubDate>Wed, 27 Jun 2018 13:15:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/2018/slides-from-ruby-to-crystal/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1XeIRwl1Y9IUAxsFdmUmRjpLl1CrIzRgFo5wdWJrsYTc/edit?usp=sharing&#34;&gt;Presentation&lt;/a&gt; about transition from Ruby to Crystal programming language.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
