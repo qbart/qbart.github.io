@@ -510,6 +510,7 @@ section:nth-child(4) { animation-delay: 0.3s; }
 
   .hero-avatar {
     max-width: 320px;
+    display: none;
   }
 
   .hero-links {
