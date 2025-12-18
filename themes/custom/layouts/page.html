@@ -1,10 +1,76 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+<section class="article">
+  <a class="back-link" href="/">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
+    Back to writing
+  </a>
+  <article class="article-body">
+    <div class="article-header">
+      <div class="article-kicker">Writing</div>
+      <h1 class="article-title">{{ .Title }}</h1>
+      <div class="article-meta">
+        <span>{{ .Date.Format "02 Jan, 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+        <!-- <span>Engineering</span> -->
+      </div>
+    </div>
+    <div class="article-grid">
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+      <aside class="article-aside">
+        <div class="article-hero"></div>
+        {{ with .Params.summary }}
+        <div class="aside-card">
+          <h4>Summary</h4>
+          <p>{{ . }}</p>
+          <!--
+          <div class="summary-chart" aria-label="Article emphasis overview">
+            <div class="summary-chart-row">
+              <span>Technical depth</span>
+              <div class="summary-chart-meter">
+                <span class="summary-chart-fill tech"></span>
+              </div>
+              <span class="summary-chart-value">High</span>
+            </div>
+            <div class="summary-chart-row">
+              <span>Business framing</span>
+              <div class="summary-chart-meter">
+                <span class="summary-chart-fill business"></span>
+              </div>
+              <span class="summary-chart-value">Medium</span>
+            </div>
+            <div class="summary-chart-row">
+              <span>Experimentation</span>
+              <div class="summary-chart-meter">
+                <span class="summary-chart-fill experiment"></span>
+              </div>
+              <span class="summary-chart-value">Active</span>
+            </div>
+          </div>
+          -->
+        </div>
+        {{ end }}
+        {{ if isset .Params "takeaways" }}
+        <div class="aside-card">
+          <h4>Key Takeaways</h4>
+          <ul>
+            {{ range .Params.takeaways }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+        <div class="aside-card">
+          <h4>Tags</h4>
+          <div class="tag-list">
+            {{ range .Params.tags }}
+            <span class="tag">{{ . }}</span>
+            {{ end }}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </article>
+</section>
 {{ end }}
