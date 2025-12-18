@@ -94,8 +94,9 @@ Sponsor this work
     <h2>Writing</h2>
   </div>
   <div class="list-items">
-    {{ $pages := where .Site.RegularPages "Section" .Site.Params.homeCollection }}
+    {{ $pages := where .Site.RegularPages "Section" "posts" }}
     {{ range $index, $page := $pages }}
+    {{ if eq $page.Params.pinned true }}
     <a href="{{ .RelPermalink }}" class="list-item">
       <div class="list-item-left">
         <h3>{{ .LinkTitle }}</h3>
@@ -104,6 +105,7 @@ Sponsor this work
         {{ .Date | time.Format site.Params.listDateFormat }}
       </div>
     </a>
+    {{ end }}
     {{ end }}
     <a href="/posts/" class="list-item">
       <div class="list-item-left">

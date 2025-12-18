@@ -47,9 +47,6 @@ where we bring our passion for gaming to life.
 
 footerContent = "\"The more I learn, the more I realize how much I don't know.\""
 
-homeCollectionTitle = 'Posts'
-homeCollection = 'posts'
-
 paginationSize = 100
 listSummaries = false
 listDateFormat = 'Jan 2006'

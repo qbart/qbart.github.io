@@ -2,6 +2,7 @@
 draft: false
 title: "How to Create a Career Path for Software Development Teams?"
 date: 2024-03-29T13:00:00+02:00
+pinned: true
 tags:
 - software
 - career

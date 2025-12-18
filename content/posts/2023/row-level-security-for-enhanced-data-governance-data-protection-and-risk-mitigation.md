@@ -2,6 +2,7 @@
 draft: false
 title: "Row-Level Security for Enhanced Data Governance, Data Protection, and Risk Mitigation"
 date: 2023-12-28T13:00:00+02:00
+pinned: true
 tags:
 - postgresql
 - security
