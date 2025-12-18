@@ -27,7 +27,7 @@ posts = "/:section/:year/:slug"
 
 [Params]
 # seo
-description = "Engineering blog of Bartłomiej Wójtowicz. CTO at Selleo Labs. Co-founder of Soft Kiwi Games."
+description = "Engineering blog of Bartłomiej Wójtowicz. CTO at Selleo Labs. Co-founder of Soft Kiwi Games. Articles and notes about software, including personal thoughts, small experiments, and things I find interesting along the way."
 
 # Appearance settings
 theme = 'auto'
