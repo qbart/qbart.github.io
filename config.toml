@@ -12,6 +12,9 @@ pygmentsStyle="dracula"
 copyright="Bartłomiej Wójtowicz"
 rssLimit=20
 
+[outputs]
+home = ['html', 'rss']
+
 [author]
 name = "Bartłomiej Wójtowicz"
 
