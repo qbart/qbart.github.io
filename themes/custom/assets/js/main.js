@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('.posts-hero .search');
+  const clearButton = document.querySelector('.posts-hero .search-clear');
   const postCards = Array.from(document.querySelectorAll('.posts .post-card'));
 
   if (!searchInput || postCards.length === 0) return;
@@ -14,8 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const updateClearState = value => {
+    if (!clearButton) return;
+    clearButton.hidden = value.trim().length === 0;
+  };
+
   searchInput.addEventListener('input', event => {
-    filterPosts(event.target.value);
+    const value = event.target.value;
+    filterPosts(value);
+    updateClearState(value);
   });
 
   searchInput.addEventListener('keydown', event => {
@@ -23,4 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     searchInput.blur();
   });
+
+  clearButton?.addEventListener('click', () => {
+    searchInput.value = '';
+    filterPosts('');
+    updateClearState('');
+    searchInput.focus();
+  });
+
+  updateClearState(searchInput.value);
 });
