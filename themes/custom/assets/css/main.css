@@ -149,6 +149,15 @@ nav {
   line-height: 1.7;
 }
 
+.hero p a {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.hero p a:hover {
+  color: var(--link-hover);
+}
+
 .hero-links {
   display: flex;
   gap: 24px;
