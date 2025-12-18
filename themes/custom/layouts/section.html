@@ -17,7 +17,7 @@
 
 <section class="posts">
   {{ range .Pages }}
-  <a href="{{ .RelPermalink }}" class="post-card">
+  <a href="{{ .RelPermalink }}" class="post-card" data-title="{{ .LinkTitle | plainify | lower }}">
     <div>
       <h3>{{ .LinkTitle }}</h3>
       <p>{{ .Params.summary }}</p>
