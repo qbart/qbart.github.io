@@ -1,11 +1,39 @@
 {{ define "main" }}
-aa
+<section class="posts-hero">
   <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  <p>
+    A collection of posts about software and business, mixed with personal thoughts, small experiments, and things I find interesting along the way.
+  </p>
+  <!--
+  <div class="posts-hero-search">
+    <input class="search" type="search" placeholder="Search posts..." aria-label="Search posts">
+  </div>
+  <div class="filters">
+    <span class="filter active">All</span>
+    <span class="filter">Frontend</span>
+    <span class="filter">Systems</span>
+    <span class="filter">Process</span>
+  </div>
+  -->
+</section>
+
+<section class="posts">
   {{ range .Pages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+  <a href="{{ .RelPermalink }}" class="post-card">
+    <div>
+      <h3>{{ .LinkTitle }}</h3>
+      <p>{{ .Params.summary }}</p>
+      <div class="post-meta">
+        <span>{{ .Date.Format "02 Jan, 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+    </div>
+    <div class="post-tags">
+      {{ range .Params.tags }}
+      <span class="tag">{{ . }}</span>
+      {{ end }}
+    </div>
+  </a>
   {{ end }}
+</section>
 {{ end }}

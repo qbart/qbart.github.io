@@ -458,3 +458,29 @@ section:nth-child(4) { animation-delay: 0.3s; }
 .tag { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); font-size: 13px; color: var(--text-secondary); }
 .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--link); text-decoration: underline; margin-bottom: 20px; }
 .back-link:hover { color: var(--link-hover); }
+
+
+.posts-hero { padding: 48px 0 32px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
+.posts-hero h1 { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; }
+.posts-hero p { color: var(--text-secondary); max-width: 640px; }
+.posts-hero-search { width: 100%; display: flex; justify-content: center; }
+.search {
+  width: min(520px, 100%);
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  background: #fff;
+  margin-top: 4px;
+}
+.search:focus { outline: 2px solid #d8f3eb; }
+.filters { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+.filter { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+.filter.active { background: var(--link); color: #fff; border-color: var(--link-hover); }
+.posts { padding: 32px 0 64px; display: flex; flex-direction: column; gap: 16px; }
+.post-card { border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); padding: 18px; display: grid; grid-template-columns: 3fr 1fr; gap: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+.post-card h3 { font-size: 18px; margin-bottom: 6px; }
+.post-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+.post-meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+.post-tags { display: flex; gap: 8px; justify-content: flex-end; align-items: flex-start; flex-wrap: wrap; }

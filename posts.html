@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing | John Doe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --text-secondary: #666;
+            --accent: #0a0a0a;
+            --border: #e5e5e5;
+            --card-bg: #fff;
+            --link: #0b9a7a;
+            --link-hover: #067f65;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+        h1, h2, h3, h4 { font-family: 'Sora', sans-serif; font-weight: 500; letter-spacing: -0.02em; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+        header { padding: 48px 0 0; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 36px; border-bottom: 1px solid var(--border); gap: 16px; }
+        .logo svg { width: 40px; height: 40px; }
+        .nav-actions { display: flex; gap: 12px; }
+        .btn { text-decoration: none; padding: 10px 16px; border-radius: 10px; font-size: 15px; border: 1px solid var(--link); color: var(--link); transition: background 0.2s, color 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn:hover { background: var(--link); color: #fff; border-color: var(--link-hover); }
+        .btn-connect { border-color: #0a66c2; background: #0a66c2; color: #fff; }
+        .btn-connect:hover { background: #004182; border-color: #004182; color: #fff; }
+        .hero { padding: 48px 0 32px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
+        .hero h1 { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; }
+        .hero p { color: var(--text-secondary); max-width: 640px; }
+        .hero-search { width: 100%; display: flex; justify-content: center; }
+        .search {
+            width: min(520px, 100%);
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 15px;
+            background: #fff;
+            margin-top: 4px;
+        }
+        .search:focus { outline: 2px solid #d8f3eb; }
+        .filters { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+        .filter { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+        .filter.active { background: var(--link); color: #fff; border-color: var(--link-hover); }
+        .posts { padding: 32px 0 64px; display: flex; flex-direction: column; gap: 16px; }
+        .post-card { border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); padding: 18px; display: grid; grid-template-columns: 3fr 1fr; gap: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+        .post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+        .post-card h3 { font-size: 18px; margin-bottom: 6px; }
+        .post-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+        .post-meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+        .post-tags { display: flex; gap: 8px; justify-content: flex-end; align-items: flex-start; flex-wrap: wrap; }
+        .tag { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); font-size: 13px; color: var(--text-secondary); }
+        footer { padding: 32px 0 56px; text-align: center; border-top: 1px solid var(--border); }
+        footer p { color: var(--text-secondary); font-size: 14px; }
+        @media (max-width: 720px) {
+            .post-card { grid-template-columns: 1fr; }
+            .post-tags { justify-content: flex-start; }
+            .hero { align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo" aria-label="Home">
+                    <svg width="48px" height="48px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M13 16H18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6 8L10 12L6 16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 18V6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </a>
+                <div class="nav-actions">
+                    <a href="https://linkedin.com" class="btn btn-connect" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        Connect
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Articles & Notes</h1>
+            <p>Long-form pieces on design systems, engineering practices, and the craft of building reliable interfaces.</p>
+            <div class="hero-search">
+                <input class="search" type="search" placeholder="Search posts..." aria-label="Search posts">
+            </div>
+            <div class="filters">
+                <span class="filter active">All</span>
+                <span class="filter">Frontend</span>
+                <span class="filter">Systems</span>
+                <span class="filter">Process</span>
+            </div>
+        </section>
+
+        <section class="posts">
+            <a href="article.html" class="post-card">
+                <div>
+                    <h3>Designing Resilient Frontends</h3>
+                    <p>How to keep experiences graceful when scripts fail or networks stutter—content-first layouts, progressive enhancement, and deliberate motion.</p>
+                    <div class="post-meta">
+                        <span>Jan 12, 2025</span>
+                        <span>8 min read</span>
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Frontend</span>
+                    <span class="tag">Resilience</span>
+                </div>
+            </a>
+            <a href="#" class="post-card">
+                <div>
+                    <h3>Patterns for Sustainable Design Systems</h3>
+                    <p>Balancing constraints and flexibility with tokens, documentation, and governance that teams actually use.</p>
+                    <div class="post-meta">
+                        <span>Dec 2, 2024</span>
+                        <span>7 min read</span>
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Design Systems</span>
+                    <span class="tag">Process</span>
+                </div>
+            </a>
+            <a href="#" class="post-card">
+                <div>
+                    <h3>Code Reviews That Ship Faster</h3>
+                    <p>Review habits that reduce churn: scoped PRs, intent summaries, checklists, and pairing when speed matters.</p>
+                    <div class="post-meta">
+                        <span>Nov 10, 2024</span>
+                        <span>5 min read</span>
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Process</span>
+                    <span class="tag">Teams</span>
+                </div>
+            </a>
+            <a href="#" class="post-card">
+                <div>
+                    <h3>TypeScript Without the Drag</h3>
+                    <p>Using types to clarify intent rather than slow delivery—strategic strictness, shared utilities, and gradual boundaries.</p>
+                    <div class="post-meta">
+                        <span>Sep 28, 2024</span>
+                        <span>6 min read</span>
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">Architecture</span>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 John Doe. Crafted with care.</p>
+        </div>
+    </footer>
+</body>
+</html>
