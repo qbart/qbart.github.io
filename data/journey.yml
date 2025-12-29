@@ -1,0 +1,37 @@
+journey:
+  - title: "Fundamentals"
+    timeframe: "Jan-Mar 2024"
+    summary: "Rebuilding the basics: composition, perspective, and how realtime renderers work under the hood."
+    focus:
+      - "Perspective drawing refresh"
+      - "Linear algebra for shading"
+      - "Hardware-friendly rendering pipelines"
+    resources:
+      - label: "Grant Abbitt's Blender fundamentals"
+        url: "https://www.youtube.com/playlist?list=PLn3ukorJv4vPHqVsK-1rUiIm-doP0Miq8"
+      - label: "Real-Time Rendering (4th ed.)"
+        url: "https://www.realtimerendering.com/"
+  - title: "Modeling & Sculpting"
+    timeframe: "Apr-Jun 2024"
+    summary: "Blocking out characters and props, moving from hard surface mockups into stylized sculpting."
+    focus:
+      - "Sub-d modeling workflows"
+      - "ZBrush / Blender sculpt and remesh"
+      - "Stylized prop texturing"
+    resources:
+      - label: "Blender Studio - Winged Hussar"
+        url: "https://studio.blender.org/films/winged-hussar"
+      - label: "XYZ - Sculpting in Blender"
+        url: "https://artstn.co/m/xyz"
+  - title: "Realtime Rendering"
+    timeframe: "Jul-Sep 2024"
+    summary: "Bringing assets into game-ready scenes running on Vulkan-based DIYE experiments."
+    focus:
+      - "Baking PBR textures"
+      - "Efficient rigging / animation export"
+      - "Vulkan materials inside DIYE"
+    resources:
+      - label: "GDC - PBR in Practice"
+        url: "https://www.gdcvault.com/play/1023586/PBR-Diffs-and-Specs"
+      - label: "LearnOpenGL PBR"
+        url: "https://learnopengl.com/PBR/Lighting"
