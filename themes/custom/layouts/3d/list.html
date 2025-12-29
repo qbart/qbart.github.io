@@ -30,7 +30,7 @@
     {{ $cover := index $images 0 }}
     <article class="render-card">
       {{ with $cover }}
-      {{ $coverDisplay := .Fit "600x400 jpg" }}
+      {{ $coverDisplay := .Fit "1200x900" }}
       <a class="render-image-link" href="{{ .RelPermalink }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
       </a>
@@ -46,12 +46,13 @@
         <p>{{ . }}</p>
         {{ end }}
         {{ if gt (len $images) 0 }}
-        <div class="render-thumbs" aria-label="Additional angles">
-          {{ range $index, $img := (after 0 $images) }}
-          {{ $thumb := $img.Fit "100x100 jpg" }}
-          <a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener noreferrer">
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 2) }}">
-          </a>
+        <div class="render-thumbs" aria-label="Render viewpoints">
+          {{ range $index, $img := $images }}
+          {{ $displayAlt := $img.Fit "1200x900" }}
+          {{ $thumb := $img.Fit "400x400" }}
+          <button type="button" class="render-thumb{{ if eq $index 0 }} is-active{{ end }}" data-display="{{ $displayAlt.RelPermalink }}" data-original="{{ $img.RelPermalink }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 1) }}">
+          </button>
           {{ end }}
         </div>
         {{ end }}
@@ -65,4 +66,31 @@
   <p>No renders published yet. Check back soon.</p>
 </section>
 {{ end }}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.render-card').forEach(card => {
+    const coverLink = card.querySelector('.render-image-link');
+    const coverImg = coverLink?.querySelector('img');
+    const thumbs = card.querySelectorAll('.render-thumb');
+    thumbs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const display = btn.dataset.display;
+        const original = btn.dataset.original;
+        if (!display || !coverImg || !coverLink) {
+          return;
+        }
+        coverImg.src = display;
+        coverLink.href = original;
+        thumbs.forEach(other => {
+          other.classList.remove('is-active');
+          other.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+      });
+    });
+  });
+});
+</script>
 {{ end }}
