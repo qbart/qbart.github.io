@@ -22,7 +22,8 @@
     </div>
     <div class="hero-avatar">
       {{ $image := resources.Get "images/avatar.png" }}
-      <img src="{{ $image.RelPermalink }}" alt="Avatar">
+      {{ $imageSmall := $image.Resize "x520" }}
+      <img src="{{ $imageSmall.RelPermalink }}" alt="Avatar">
     </div>
   </div>
 </section>
@@ -148,4 +149,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 {{ end }}
-
