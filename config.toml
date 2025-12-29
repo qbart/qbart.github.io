@@ -47,8 +47,6 @@ While I occasionally play video games, I'm mostly interested in the magic behind
 Together with my cousin, we run a small indie game development studio called [Soft Kiwi Games](https://softkiwi.games),
 where we bring our passion for gaming to life.
 """
-homeJourneyTitle = '3D Learning Journey'
-homeJourneyIntro = "Notes from my ongoing dive into rendering, modeling, and real-time graphics experiments."
 
 footerContent = "\"The more I learn, the more I realize how much I don't know.\""
 
@@ -97,3 +95,4 @@ svg = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="
 [markup]
 [markup.highlight]
 style = 'algol'
+

@@ -27,50 +27,6 @@
   </div>
 </section>
 
-<!-- 3D Learning Journey -->
-{{ $journey := .Site.Data.journey.journey }}
-{{ if $journey }}
-<section id="journey">
-  <div class="section-header">
-    <div class="section-heading">
-      <h2>{{ .Site.Params.homeJourneyTitle | default "3D Learning Journey" }}</h2>
-      {{ with .Site.Params.homeJourneyIntro }}
-      <p class="section-subtitle">{{ . }}</p>
-      {{ end }}
-    </div>
-  </div>
-  <div class="journey-grid">
-    {{ range $journey }}
-    <article class="journey-card">
-      {{ with .timeframe }}
-      <p class="journey-timeframe">{{ . }}</p>
-      {{ end }}
-      <h3>{{ .title }}</h3>
-      {{ with .summary }}
-      <p class="journey-summary">{{ . }}</p>
-      {{ end }}
-      {{ with .focus }}
-      <ul class="journey-focus">
-        {{ range . }}
-        <li>{{ . }}</li>
-        {{ end }}
-      </ul>
-      {{ end }}
-      {{ with .resources }}
-      <div class="journey-resources">
-        {{ range . }}
-        <a href="{{ .url }}" class="journey-link" target="_blank" rel="noopener noreferrer">
-          {{ .label }}
-        </a>
-        {{ end }}
-      </div>
-      {{ end }}
-    </article>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
 <!-- Featured Projects -->
 <section id="projects">
   <div class="section-header">
@@ -192,3 +148,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 {{ end }}
+
