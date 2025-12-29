@@ -30,7 +30,7 @@
     {{ $cover := index $images 0 }}
     <article class="render-card">
       {{ with $cover }}
-      {{ $coverDisplay := .Fit "1200x900" }}
+      {{ $coverDisplay := .Fit "1200x900 jpg" }}
       <a class="render-image-link" href="{{ .RelPermalink }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
       </a>
@@ -48,8 +48,8 @@
         {{ if gt (len $images) 0 }}
         <div class="render-thumbs" aria-label="Render viewpoints">
           {{ range $index, $img := $images }}
-          {{ $displayAlt := $img.Fit "1200x900" }}
-          {{ $thumb := $img.Fit "400x400" }}
+          {{ $displayAlt := $img.Fit "1200x900 jpg" }}
+          {{ $thumb := $img.Fit "400x400 jpg" }}
           <button type="button" class="render-thumb{{ if eq $index 0 }} is-active{{ end }}" data-display="{{ $displayAlt.RelPermalink }}" data-original="{{ $img.RelPermalink }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
             <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 1) }}">
           </button>
