@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $renders := sort .Site.Data.renders.renders "date" "desc" }}
+<section class="gallery-hero">
+  <div class="gallery-hero-content">
+    <p class="gallery-kicker">Rendering</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}
+    <p class="gallery-intro">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+{{ if $renders }}
+<section class="gallery">
+  <div class="gallery-grid">
+    {{ range $renders }}
+    <article class="render-card">
+      {{ if or .thumbnail .image }}
+      <a class="render-image-link" href="{{ .image }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ default .image .thumbnail }}" alt="{{ .title }} render">
+      </a>
+      {{ end }}
+      <div class="render-card-body">
+        <div class="render-meta">
+          {{ with .date }}
+          <time datetime="{{ . }}">{{ (time .).Format "02 Jan 2006" }}</time>
+          {{ end }}
+        </div>
+        <h3>{{ .title }}</h3>
+        {{ with .description }}
+        <p>{{ . }}</p>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ else }}
+<section class="gallery">
+  <p>No renders published yet. Check back soon.</p>
+</section>
+{{ end }}
+{{ end }}
