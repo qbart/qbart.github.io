@@ -1,8 +1,8 @@
 {{ define "main" }}
-{{ $renders := sort .Site.Data.renders.renders "date" "desc" }}
+{{ $renders := sort (default (slice) .Params.renders) "date" "desc" }}
 <section class="gallery-hero">
   <div class="gallery-hero-content">
-    <p class="gallery-kicker">Rendering</p>
+    <p class="gallery-kicker">3D Modeling</p>
     <h1>{{ .Title }}</h1>
     {{ with .Params.description }}
     <p class="gallery-intro">{{ . }}</p>
@@ -10,25 +10,48 @@
   </div>
 </section>
 
-{{ if $renders }}
+{{ if gt (len $renders) 0 }}
 <section class="gallery">
   <div class="gallery-grid">
     {{ range $renders }}
+    {{ $render := . }}
+    {{ $images := slice }}
+    {{ if isset $render "images" }}
+      {{ range $render.images }}
+        {{ with $.Resources.GetMatch . }}
+          {{ $images = $images | append . }}
+        {{ end }}
+      {{ end }}
+    {{ else if isset $render "image" }}
+      {{ with $.Resources.GetMatch $render.image }}
+        {{ $images = $images | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $cover := index $images 0 }}
     <article class="render-card">
-      {{ if or .thumbnail .image }}
-      <a class="render-image-link" href="{{ .image }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ default .image .thumbnail }}" alt="{{ .title }} render">
+      {{ with $cover }}
+      <a class="render-image-link" href="{{ .RelPermalink }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ .RelPermalink }}" alt="{{ $render.title }} render">
       </a>
       {{ end }}
       <div class="render-card-body">
         <div class="render-meta">
-          {{ with .date }}
+          {{ with $render.date }}
           <time datetime="{{ . }}">{{ (time .).Format "02 Jan 2006" }}</time>
           {{ end }}
         </div>
-        <h3>{{ .title }}</h3>
-        {{ with .description }}
+        <h3>{{ $render.title }}</h3>
+        {{ with $render.description }}
         <p>{{ . }}</p>
+        {{ end }}
+        {{ if gt (len $images) 1 }}
+        <div class="render-thumbs" aria-label="Additional angles">
+          {{ range $index, $img := (after 1 $images) }}
+          <a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ $img.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 2) }}">
+          </a>
+          {{ end }}
+        </div>
         {{ end }}
       </div>
     </article>
