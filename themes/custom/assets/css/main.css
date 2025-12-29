@@ -299,6 +299,7 @@ section:last-child {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
 }
 
 .render-meta {
@@ -322,7 +323,8 @@ section:last-child {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: auto;
+  padding-top: 6px;
 }
 
 .render-thumbs a {
