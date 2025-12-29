@@ -8,7 +8,6 @@ renders:
     images:
       - "2025/chess-knight-2.png"
       - "2025/chess-knight-1.png"
-      - "2025/chess-knight-3.png"
       - "2025/chess-knight-4.png"
   - title: "Modeling raft course"
     date: "2025-12-21"
@@ -18,7 +17,7 @@ renders:
       - "2025/raft-2.png"
   - title: "Shading tutorial"
     date: "2025-12-18"
-    description: "Did not model this, scene comes from the tutorial. I was playing the shading and materials."
+    description: "Did not model this, scene comes from the tutorial. I was playing with the shading and materials."
     images:
       - "2025/scene.png"
 ---

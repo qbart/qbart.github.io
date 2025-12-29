@@ -30,8 +30,9 @@
     {{ $cover := index $images 0 }}
     <article class="render-card">
       {{ with $cover }}
+      {{ $coverDisplay := .Fit "600x400" }}
       <a class="render-image-link" href="{{ .RelPermalink }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ .RelPermalink }}" alt="{{ $render.title }} render">
+        <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
       </a>
       {{ end }}
       <div class="render-card-body">
@@ -44,11 +45,12 @@
         {{ with $render.description }}
         <p>{{ . }}</p>
         {{ end }}
-        {{ if gt (len $images) 1 }}
+        {{ if gt (len $images) 0 }}
         <div class="render-thumbs" aria-label="Additional angles">
-          {{ range $index, $img := (after 1 $images) }}
+          {{ range $index, $img := (after 0 $images) }}
+          {{ $thumb := $img.Fit "100x100" }}
           <a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener noreferrer">
-            <img src="{{ $img.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 2) }}">
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 2) }}">
           </a>
           {{ end }}
         </div>
