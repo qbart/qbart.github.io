@@ -262,9 +262,18 @@ section:last-child {
   box-shadow: 0 18px 36px rgba(0,0,0,0.08);
 }
 
+.render-display {
+  position: relative;
+  background: #000;
+}
+
 .render-image-link {
   display: block;
   position: relative;
+}
+
+.render-image-link.is-hidden {
+  display: none;
 }
 
 .render-image-link::after {
@@ -292,6 +301,17 @@ section:last-child {
   object-fit: cover;
   aspect-ratio: 4 / 3;
   cursor: zoom-in;
+}
+
+.render-video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: #000;
+}
+
+.render-video.is-hidden {
+  display: none;
 }
 
 .render-card-body {

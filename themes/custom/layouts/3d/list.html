@@ -33,27 +33,52 @@
         {{ $videoCover := $.Resources.GetMatch .cover }}
         {{ $videoMovie := $.Resources.GetMatch .movie }}
         {{ if and $videoCover $videoMovie }}
-          {{ $videoThumbs = $videoThumbs | append (dict "cover" $videoCover "movie" $videoMovie) }}
+          {{ $videoDisplay := $videoCover.Fit "1200x900 jpg" }}
+          {{ $videoThumb := $videoCover.Fit "400x400 jpg" }}
+          {{ $videoThumbs = $videoThumbs | append (dict "cover" $videoCover "display" $videoDisplay "thumb" $videoThumb "movie" $videoMovie) }}
         {{ end }}
       {{ end }}
     {{ end }}
+    {{ $hasImages := gt (len $images) 0 }}
+    {{ $hasVideos := gt (len $videoThumbs) 0 }}
     {{ $coverResource := "" }}
     {{ $coverLinkTarget := "" }}
-    {{ if gt (len $images) 0 }}
+    {{ if $hasImages }}
       {{ $coverResource = index $images 0 }}
       {{ $coverLinkTarget = $coverResource.RelPermalink }}
-    {{ else if gt (len $videoThumbs) 0 }}
-      {{ $firstVideo := index $videoThumbs 0 }}
-      {{ $coverResource = $firstVideo.cover }}
-      {{ $coverLinkTarget = $firstVideo.movie.RelPermalink }}
+    {{ end }}
+    {{ $initialVideo := "" }}
+    {{ if and (not $hasImages) $hasVideos }}
+      {{ $initialVideo = index $videoThumbs 0 }}
+    {{ end }}
+    {{ $defaultVideoPoster := "" }}
+    {{ if $hasVideos }}
+      {{ $defaultPosterResource := index (index $videoThumbs 0) "display" }}
+      {{ $defaultVideoPoster = $defaultPosterResource.RelPermalink }}
     {{ end }}
     <article class="render-card">
-      {{ with $coverResource }}
-      {{ $coverDisplay := .Fit "1200x900 jpg" }}
-      <a class="render-image-link" href="{{ $coverLinkTarget }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
-      </a>
-      {{ end }}
+      <div class="render-display">
+        {{ with $coverResource }}
+        {{ $coverDisplay := .Fit "1200x900 jpg" }}
+        <a class="render-image-link{{ if $initialVideo }} is-hidden{{ end }}" href="{{ $coverLinkTarget }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
+        </a>
+        {{ end }}
+        {{ if $hasVideos }}
+        {{ $videoClasses := "render-video" }}
+        {{ if not $initialVideo }}
+          {{ $videoClasses = printf "%s is-hidden" $videoClasses }}
+        {{ end }}
+        {{ $initialVideoMovie := "" }}
+        {{ $initialVideoPoster := $defaultVideoPoster }}
+        {{ if $initialVideo }}
+          {{ $initialVideoMovie = (index $initialVideo "movie").RelPermalink }}
+          {{ $initialPosterResource := index $initialVideo "display" }}
+          {{ $initialVideoPoster = $initialPosterResource.RelPermalink }}
+        {{ end }}
+        <video class="{{ $videoClasses }}" controls playsinline loop preload="metadata" poster="{{ $initialVideoPoster }}" data-default-poster="{{ $defaultVideoPoster }}"{{ if $initialVideoMovie }} src="{{ $initialVideoMovie }}"{{ end }}></video>
+        {{ end }}
+      </div>
       <div class="render-card-body">
         <div class="render-meta">
           {{ with $render.date }}
@@ -64,20 +89,21 @@
         {{ with $render.description }}
         <p>{{ . }}</p>
         {{ end }}
-        {{ if or (gt (len $images) 0) (gt (len $videoThumbs) 0) }}
+        {{ if or $hasImages $hasVideos }}
         <div class="render-thumbs" aria-label="Render viewpoints">
           {{ range $index, $img := $images }}
           {{ $displayAlt := $img.Fit "1200x900 jpg" }}
           {{ $thumb := $img.Fit "400x400 jpg" }}
-          <button type="button" class="render-thumb{{ if eq $index 0 }} is-active{{ end }}" data-display="{{ $displayAlt.RelPermalink }}" data-original="{{ $img.RelPermalink }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+          <button type="button" class="render-thumb{{ if eq $index 0 }} is-active{{ end }}" data-type="image" data-display="{{ $displayAlt.RelPermalink }}" data-original="{{ $img.RelPermalink }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
             <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 1) }}">
           </button>
           {{ end }}
           {{ range $videoIndex, $video := $videoThumbs }}
-          {{ $videoDisplay := $video.cover.Fit "1200x900 jpg" }}
-          {{ $videoThumb := $video.cover.Fit "400x400 jpg" }}
+          {{ $videoDisplay := index $video "display" }}
+          {{ $videoThumb := index $video "thumb" }}
+          {{ $videoMovie := index $video "movie" }}
           {{ $videoIsActive := and (eq $videoIndex 0) (eq (len $images) 0) }}
-          <button type="button" class="render-thumb render-thumb-video{{ if $videoIsActive }} is-active{{ end }}" data-display="{{ $videoDisplay.RelPermalink }}" data-original="{{ $video.movie.RelPermalink }}" aria-pressed="{{ if $videoIsActive }}true{{ else }}false{{ end }}">
+          <button type="button" class="render-thumb render-thumb-video{{ if $videoIsActive }} is-active{{ end }}" data-type="video" data-display="{{ $videoDisplay.RelPermalink }}" data-poster="{{ $videoDisplay.RelPermalink }}" data-original="{{ $videoMovie.RelPermalink }}" aria-pressed="{{ if $videoIsActive }}true{{ else }}false{{ end }}">
             <img src="{{ $videoThumb.RelPermalink }}" alt="{{ printf "%s animation %d" $render.title (add $videoIndex 1) }}">
             <span class="render-thumb-icon" aria-hidden="true">
               <svg viewBox="0 0 32 32" role="presentation" focusable="false">
@@ -105,16 +131,67 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.render-card').forEach(card => {
     const coverLink = card.querySelector('.render-image-link');
     const coverImg = coverLink?.querySelector('img');
+    const videoPlayer = card.querySelector('.render-video');
     const thumbs = card.querySelectorAll('.render-thumb');
+
+    const showImage = btn => {
+      if (!coverLink || !coverImg) {
+        return;
+      }
+      const display = btn.dataset.display;
+      const original = btn.dataset.original;
+      if (!display || !original) {
+        return;
+      }
+      if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.removeAttribute('src');
+        const defaultPoster = videoPlayer.dataset.defaultPoster;
+        if (defaultPoster) {
+          videoPlayer.poster = defaultPoster;
+        }
+        videoPlayer.load();
+        videoPlayer.classList.add('is-hidden');
+      }
+      coverImg.src = display;
+      coverLink.href = original;
+      coverLink.classList.remove('is-hidden');
+    };
+
+    const showVideo = btn => {
+      if (!videoPlayer) {
+        return;
+      }
+      const videoSrc = btn.dataset.original;
+      if (!videoSrc) {
+        return;
+      }
+      if (coverLink) {
+        coverLink.classList.add('is-hidden');
+      }
+      const poster = btn.dataset.poster || videoPlayer.dataset.defaultPoster || btn.dataset.display;
+      if (poster) {
+        videoPlayer.poster = poster;
+      }
+      const currentSrc = videoPlayer.getAttribute('src');
+      if (currentSrc !== videoSrc) {
+        videoPlayer.setAttribute('src', videoSrc);
+        videoPlayer.load();
+      } else {
+        videoPlayer.currentTime = 0;
+      }
+      videoPlayer.classList.remove('is-hidden');
+      videoPlayer.play().catch(() => {});
+    };
+
     thumbs.forEach(btn => {
       btn.addEventListener('click', () => {
-        const display = btn.dataset.display;
-        const original = btn.dataset.original;
-        if (!display || !coverImg || !coverLink) {
-          return;
+        const type = btn.dataset.type || 'image';
+        if (type === 'video') {
+          showVideo(btn);
+        } else {
+          showImage(btn);
         }
-        coverImg.src = display;
-        coverLink.href = original;
         thumbs.forEach(other => {
           other.classList.remove('is-active');
           other.setAttribute('aria-pressed', 'false');
