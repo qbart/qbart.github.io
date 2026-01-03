@@ -27,11 +27,30 @@
         {{ $images = $images | append . }}
       {{ end }}
     {{ end }}
-    {{ $cover := index $images 0 }}
+    {{ $videoThumbs := slice }}
+    {{ if isset $render "videos" }}
+      {{ range $render.videos }}
+        {{ $videoCover := $.Resources.GetMatch .cover }}
+        {{ $videoMovie := $.Resources.GetMatch .movie }}
+        {{ if and $videoCover $videoMovie }}
+          {{ $videoThumbs = $videoThumbs | append (dict "cover" $videoCover "movie" $videoMovie) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ $coverResource := "" }}
+    {{ $coverLinkTarget := "" }}
+    {{ if gt (len $images) 0 }}
+      {{ $coverResource = index $images 0 }}
+      {{ $coverLinkTarget = $coverResource.RelPermalink }}
+    {{ else if gt (len $videoThumbs) 0 }}
+      {{ $firstVideo := index $videoThumbs 0 }}
+      {{ $coverResource = $firstVideo.cover }}
+      {{ $coverLinkTarget = $firstVideo.movie.RelPermalink }}
+    {{ end }}
     <article class="render-card">
-      {{ with $cover }}
+      {{ with $coverResource }}
       {{ $coverDisplay := .Fit "1200x900 jpg" }}
-      <a class="render-image-link" href="{{ .RelPermalink }}" target="_blank" rel="noopener noreferrer">
+      <a class="render-image-link" href="{{ $coverLinkTarget }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ $coverDisplay.RelPermalink }}" alt="{{ $render.title }} render">
       </a>
       {{ end }}
@@ -45,13 +64,27 @@
         {{ with $render.description }}
         <p>{{ . }}</p>
         {{ end }}
-        {{ if gt (len $images) 0 }}
+        {{ if or (gt (len $images) 0) (gt (len $videoThumbs) 0) }}
         <div class="render-thumbs" aria-label="Render viewpoints">
           {{ range $index, $img := $images }}
           {{ $displayAlt := $img.Fit "1200x900 jpg" }}
           {{ $thumb := $img.Fit "400x400 jpg" }}
           <button type="button" class="render-thumb{{ if eq $index 0 }} is-active{{ end }}" data-display="{{ $displayAlt.RelPermalink }}" data-original="{{ $img.RelPermalink }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
             <img src="{{ $thumb.RelPermalink }}" alt="{{ printf "%s angle %d" $render.title (add $index 1) }}">
+          </button>
+          {{ end }}
+          {{ range $videoIndex, $video := $videoThumbs }}
+          {{ $videoDisplay := $video.cover.Fit "1200x900 jpg" }}
+          {{ $videoThumb := $video.cover.Fit "400x400 jpg" }}
+          {{ $videoIsActive := and (eq $videoIndex 0) (eq (len $images) 0) }}
+          <button type="button" class="render-thumb render-thumb-video{{ if $videoIsActive }} is-active{{ end }}" data-display="{{ $videoDisplay.RelPermalink }}" data-original="{{ $video.movie.RelPermalink }}" aria-pressed="{{ if $videoIsActive }}true{{ else }}false{{ end }}">
+            <img src="{{ $videoThumb.RelPermalink }}" alt="{{ printf "%s animation %d" $render.title (add $videoIndex 1) }}">
+            <span class="render-thumb-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" role="presentation" focusable="false">
+                <circle cx="16" cy="16" r="14" />
+                <polygon points="13,10 22,16 13,22" />
+              </svg>
+            </span>
           </button>
           {{ end }}
         </div>
