@@ -2,6 +2,23 @@
 title: "Gallery"
 description: "Selected projects from my 3D learning journey in Blender."
 renders:
+  - title: "Animated Plane"
+    date: "2026-01-03"
+    description: "Modeled and textured plane. Learned UV unwrapping and simple keyframe animation. Texture was generated from UV map with generative AI."
+    images:
+      - "2025/plane1.png"
+      - "2025/plane2.png"
+      - "2025/plane-uv.png"
+      - "2025/plane-uv-texture.png"
+    videos:
+      - cover: "2025/plane-cover.png"
+        movie: "2025/plane.webm"
+  - title: "T-Rex"
+    date: "2025-12-30"
+    description: "Another model traced from the image with simple topology."
+    images:
+      - "2025/trex.png"
+      - "2025/trex-wireframe.png"
   - title: "The Knight's End"
     date: "2025-12-28"
     description: "Since I play chess I've decieded to give it a try and model chess knight, learned tracing, few modifiers and some retopology techniques to preserve quad based mesh."
