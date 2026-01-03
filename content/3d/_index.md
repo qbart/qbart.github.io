@@ -8,7 +8,6 @@ renders:
     images:
       - "2025/plane1.png"
       - "2025/plane2.png"
-      - "2025/plane-uv.png"
       - "2025/plane-uv-texture.png"
     videos:
       - cover: "2025/plane-cover.png"
