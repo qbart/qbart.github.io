@@ -360,7 +360,6 @@ section:last-child {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  animation: videoIconPulse 1.6s ease-in-out infinite;
 }
 
 .render-thumb-video .render-thumb-icon svg {
@@ -386,21 +385,6 @@ section:last-child {
 
 .render-thumb-video.is-active .render-thumb-icon circle {
   fill: rgba(0, 0, 0, 0.6);
-}
-
-@keyframes videoIconPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.85;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.85;
-  }
 }
 
 .render-thumb.is-active {
