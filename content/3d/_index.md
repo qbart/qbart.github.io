@@ -2,6 +2,14 @@
 title: "Gallery"
 description: "Selected projects from my 3D learning journey in Blender."
 renders:
+  - title: "First Car"
+    date: "2026-01-10"
+    description: "First modeled car, night lighting, EEVEE renderer with bloom."
+    images:
+      - "2026/first-car1.png"
+      - "2026/first-car2.png"
+      - "2026/first-car3.png"
+      - "2026/first-car-w.png"
   - title: "Animated Plane"
     date: "2026-01-03"
     description: "Modeled and textured plane. Learned UV unwrapping and simple keyframe animation. Texture was generated from UV map with generative AI."
