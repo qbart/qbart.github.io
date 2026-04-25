@@ -3,7 +3,7 @@ title: "Gallery"
 description: "Selected projects from my 3D learning journey in Blender."
 renders:
   - title: "Building with Geometry Nodes"
-    date: "2026-01-10"
+    date: "2026-04-25"
     description: "Building from reference, practiced the Geometry Nodes for roof and shading based on Geometry node attributes."
     images:
       - "2026/building/render.png"
