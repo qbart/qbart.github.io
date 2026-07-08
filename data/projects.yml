@@ -65,6 +65,19 @@ projects:
       - vulkan
       - debug-draw
       - rendering
+  - name: "FerroDB"
+    url: "https://github.com/qbart/ferrodb"
+    text: "Database management tool with explicit, auditable schema migrations and built-in terminal browser."
+    featured_text: "Database management with auditable migrations and a terminal browser."
+    featured: true
+    image_resize: "x192"
+    image: "/images/featured/ferrodb.png"
+    tag: Go
+    tags:
+      - go
+      - database
+      - migrations
+      - cli
   - name: "Hashira"
     url: "https://github.com/SoftKiwiGames/hashira"
     text: "WebAssembly 2D map renderer."
