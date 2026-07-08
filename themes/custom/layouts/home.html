@@ -8,22 +8,16 @@
       {{ with .Site.Params.homeIntroContent }}
       <p>{{ . | markdownify }}</p>
       {{ end }}
-      <div class="hero-links">
-        {{ with .Site.Params.social }}
-        {{- range . }}
-        <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
-          title="{{ (.title | default .name) | title }}">
-          {{- .svg | safeHTML }}
-          {{- .name }}
-        </a>
-        {{- end }}
-        {{ end }}
-      </div>
     </div>
-    <div class="hero-avatar">
-      {{ $image := resources.Get "images/avatar.png" }}
-      {{ $imageSmall := $image.Resize "x520" }}
-      <img src="{{ $imageSmall.RelPermalink }}" alt="Avatar">
+    <div class="hero-links">
+      {{ with .Site.Params.social }}
+      {{- range . }}
+      <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
+        title="{{ (.title | default .name) | title }}">
+        {{- .svg | safeHTML }}
+      </a>
+      {{- end }}
+      {{ end }}
     </div>
   </div>
 </section>
@@ -95,19 +89,6 @@ Sponsor this work
     <h2>Writing</h2>
   </div>
   <div class="list-items">
-    {{ $pages := where .Site.RegularPages "Section" "posts" }}
-    {{ range $index, $page := $pages }}
-    {{ if eq $page.Params.pinned true }}
-    <a href="{{ .RelPermalink }}" class="list-item">
-      <div class="list-item-left">
-        <h3>{{ .LinkTitle }}</h3>
-      </div>
-      <div class="list-item-right">
-        {{ .Date | time.Format site.Params.listDateFormat }}
-      </div>
-    </a>
-    {{ end }}
-    {{ end }}
     <a href="/posts/" class="list-item">
       <div class="list-item-left">
         <h3>Read more...</h3>

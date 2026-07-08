@@ -36,7 +36,7 @@ hideHeader = false
 readTime = true
 
 # Intro on main page, content is markdown
-homeIntroTitle = 'Hello there!'
+homeIntroTitle = 'Hello, World!'
 homeIntroContent = """
 My name is Bartłomiej Wójtowicz, currently the CTO at [Selleo Labs](https://selleo.com?utm_source=qbart.dev&utm_campaign=qbart.dev),
 where we support our clients with business and product development.

@@ -11,11 +11,78 @@ projects:
       - c++
       - vulkan
       - rendering
+  - name: "vkm"
+    url: "https://github.com/qbart/vkm"
+    text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
+    featured_text: "Math library for games with first-class Vulkan and Slang interop."
+    featured: true
+    image_resize: "x192"
+    image: "/images/placeholder.png"
+    tag: C++
+    tags:
+      - c++
+      - vulkan
+      - math
+      - slang
+      - gamedev
+  - name: "assetc"
+    url: "https://github.com/qbart/assetc"
+    text: "Asset Compiler that turns raw assets into runtime friendly formats for Games."
+    featured_text: "Asset compiler turning raw assets into runtime-friendly formats."
+    featured: true
+    image_resize: "x192"
+    image: "/images/placeholder.png"
+    tag: C++
+    tags:
+      - c++
+      - vulkan
+      - assets
+      - gltf
+      - ktx
+  - name: "zen"
+    url: "https://github.com/SoftKiwiGames/zen"
+    text: "Web framework for lazy devs."
+    featured_text: "Web framework for lazy devs."
+    featured: true
+    image_resize: "x192"
+    image: "/images/placeholder.png"
+    tag: Go
+    tags:
+      - go
+      - http
+      - framework
+      - web
+  - name: "vkdd"
+    url: "https://github.com/qbart/vkdd"
+    text: "Immediate-mode debug-draw library for Vulkan."
+    featured_text: "Immediate-mode debug-draw library for Vulkan."
+    featured: true
+    image_resize: "x192"
+    image: "/images/placeholder.png"
+    tag: C++
+    tags:
+      - c++
+      - vulkan
+      - debug-draw
+      - rendering
+  - name: "FerroDB"
+    url: "https://github.com/qbart/ferrodb"
+    text: "Database management tool with explicit, auditable schema migrations and built-in terminal browser."
+    featured_text: "Database management with auditable migrations and a terminal browser."
+    featured: true
+    image_resize: "x192"
+    image: "/images/placeholder.png"
+    tag: Go
+    tags:
+      - go
+      - database
+      - migrations
+      - cli
   - name: "Hashira"
     url: "https://github.com/SoftKiwiGames/hashira"
     text: "WebAssembly 2D map renderer."
     featured_text: "Experimental WebAssembly 2D map renderer."
-    featured: true
+    featured: false
     image_resize: "286x"
     image: "/images/featured/hashira.png"
     tag: Go
@@ -28,13 +95,63 @@ projects:
     url: "https://github.com/Selleo/terraform-aws-modules"
     text: "Setup secure AWS infrastructure with Terraform."
     featured_text: "AWS infrastructure designed to be secured by default."
-    featured: true
+    featured: false
     image_resize: "x96"
     image: "/images/featured/aws.png"
     tag: Terraform
     tags:
       - terraform
       - aws
+  - name: "Hades"
+    url: "https://github.com/SoftKiwiGames/hades"
+    featured: false
+    text: "Change execution tool for servers you fully own, it runs exactly what you tell it to."
+    tag: Go
+    tags:
+      - go
+      - infrastructure
+      - deployment
+      - cli
+  - name: "Gaia"
+    url: "https://github.com/qbart/gaia"
+    featured: false
+    text: "AI continuous delivery loop that picks up tasks from GitHub issues or Trello and ships them."
+    tag: Go
+    tags:
+      - go
+      - ai
+      - automation
+      - ci
+  - name: "ys"
+    url: "https://github.com/qbart/ys"
+    featured: false
+    text: "YAML schema validation for Go."
+    tag: Go
+    tags:
+      - go
+      - yaml
+      - schema
+      - validation
+  - name: "tui"
+    url: "https://github.com/qbart/tui"
+    featured: false
+    text: "Small collection of reusable Bubble Tea TUI components."
+    tag: Go
+    tags:
+      - go
+      - tui
+      - bubbletea
+      - cli
+  - name: "rui"
+    url: "https://github.com/qbart/rui"
+    featured: false
+    text: "Vim inspired TUI for Redis."
+    tag: Go
+    tags:
+      - go
+      - redis
+      - tui
+      - cli
   - name: "Expecto"
     url: "https://github.com/qbart/expecto"
     featured: false
@@ -69,7 +186,7 @@ projects:
     url: "https://github.com/ohkrab/krab"
     text: "Database tool."
     featured_text: "Database management for elephants."
-    featured: true
+    featured: false
     image_resize: "x96"
     image: "/images/featured/krab.png"
     tag: Go
