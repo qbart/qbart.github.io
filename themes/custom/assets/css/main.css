@@ -253,6 +253,8 @@ section:last-child {
 }
 
 .project-card {
+  /* Thumbnail scales with the viewport so the row never crowds the text. */
+  --thumb: clamp(72px, 20vw, 120px);
   display: flex;
   gap: 14px;
   align-items: flex-start;
@@ -273,8 +275,8 @@ section:last-child {
 }
 
 .project-cover {
-  flex: 0 0 auto;
-  width: 120px;
+  flex: 0 0 var(--thumb);
+  width: var(--thumb);
   aspect-ratio: auto;
   background: none;
   display: block;
@@ -286,15 +288,17 @@ section:last-child {
 }
 
 .project-cover img {
-  width: 120px;
+  width: 100%;
   height: auto;
-  max-height: 120px;
+  max-height: var(--thumb);
   object-fit: contain;
   border: 1px solid #000000;
   display: block;
 }
 
 .project-info {
+  flex: 1 1 auto;
+  min-width: 0;
   padding: 0;
 }
 
@@ -303,12 +307,14 @@ section:last-child {
   font-size: 1.15em;
   color: var(--link);
   text-decoration: underline;
+  overflow-wrap: break-word;
 }
 
 .project-info p {
   margin: 0;
   font-size: 1em;
   color: var(--text);
+  overflow-wrap: break-word;
 }
 
 /* --------------------------------------------------------------------------
@@ -614,6 +620,22 @@ footer p {
   }
 
   .project-card {
-    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .project-info h3 {
+    font-size: 1.05em;
+  }
+
+  .project-info p {
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-card {
+    gap: 10px;
   }
 }
