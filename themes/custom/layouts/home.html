@@ -34,7 +34,7 @@
         {{ $image := resources.Get .image }}
         {{ $image := $image.Resize .image_resize }}
         <!-- { $image := $image.Crop "96x96" } -->
-        <img src="{{ $image.RelPermalink }}" alt="{{ .name }}" class="project-image">
+        <img src="{{ $image.RelPermalink }}" alt="{{ .name }}" class="project-image project-image--{{ .name | urlize }}">
       </div>
       <div class="project-info">
         <h3>{{ .name }}</h3>

@@ -1,20 +1,21 @@
 /* ==========================================================================
    Old-school, almost-raw HTML styling.
-   Inter body, Roboto titles, classic blue underlined links, no cards/shadows/gradients.
+   System-font body and titles, classic blue underlined links, no cards/shadows/gradients.
    ========================================================================== */
 
 :root {
-  /* Body uses Inter; titles use Roboto. */
-  --font-body: 'Varela', 'Inter', system-ui, sans-serif;
-  --font-head: 'Geist Pixel', 'Roboto', system-ui, sans-serif;
-  --font-mono: 'Ubuntu Mono', "Courier New", Courier, monospace;
-  /* link colors: muted indigo triad that sits well next to #444 text */
+  --font-body: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  --font-head: "Trebuchet MS", Arial, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  /* link colors: muted indigo triad */
   --link: #2b46c0;
   --link-hover: #16277a;
   --link-visited: #6a4a9c;
   --link-active: #b3402e;
   /* body text color */
-  --text: #444444;
+  --text: #1C2023;
+  /* highlight behind page/section headers */
+  --header-bg: #132b23;
 }
 
 *,
@@ -65,9 +66,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
+h2 { font-size: 1.1em; }
 h3 { font-size: 1.2em; }
 h4 { font-size: 1.05em; }
+
+/* Section headers sit on a full-width solid highlight. */
+.section-header h2 {
+  display: block;
+  background: var(--header-bg);
+  color: #ffffff;
+  padding: 3px 10px;
+}
 
 p {
   margin: 0 0 1em;
@@ -166,7 +175,6 @@ nav {
    -------------------------------------------------------------------------- */
 .hero {
   padding: 20px 0;
-  border-bottom: 1px solid #808080;
 }
 
 .hero-layout {
@@ -225,23 +233,17 @@ nav {
    Sections
    -------------------------------------------------------------------------- */
 section {
-  padding: 20px 0;
-  border-bottom: 1px solid #808080;
-}
-
-section:last-child {
-  border-bottom: none;
+  padding-bottom: 20px;
 }
 
 .section-header {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .section-header h2 {
-  font-size: 1.5em;
+  font-size: 1.1em;
   text-transform: none;
   letter-spacing: normal;
-  color: var(--text);
   font-weight: bold;
 }
 
@@ -294,6 +296,12 @@ section:last-child {
   object-fit: contain;
   border: 1px solid #000000;
   display: block;
+}
+
+/* Square logos fill the whole thumb box; scale this one back to match the rest. */
+.project-cover img.project-image--zen {
+  width: 75%;
+  margin: 0 auto;
 }
 
 .project-info {
@@ -479,7 +487,7 @@ footer p {
 /* --------------------------------------------------------------------------
    Posts index
    -------------------------------------------------------------------------- */
-.posts-hero { padding: 20px 0; border-bottom: 1px solid #808080; display: block; text-align: left; }
+.posts-hero { padding: 20px 0; display: block; text-align: left; }
 .posts-hero h1 { font-size: 2em; line-height: 1.2; margin-top: 0; }
 .posts-hero p { color: var(--text); max-width: none; }
 .posts-hero-search { width: 100%; }

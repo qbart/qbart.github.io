@@ -17,7 +17,7 @@ projects:
     featured_text: "Math library for games with first-class Vulkan and Slang interop."
     featured: true
     image_resize: "x192"
-    image: "/images/placeholder.png"
+    image: "/images/featured/vkm.png"
     tag: C++
     tags:
       - c++
@@ -31,7 +31,7 @@ projects:
     featured_text: "Asset compiler turning raw assets into runtime-friendly formats."
     featured: true
     image_resize: "x192"
-    image: "/images/placeholder.png"
+    image: "/images/featured/assetc.png"
     tag: C++
     tags:
       - c++
@@ -45,7 +45,7 @@ projects:
     featured_text: "Web framework for lazy devs."
     featured: true
     image_resize: "x192"
-    image: "/images/placeholder.png"
+    image: "/images/featured/zen.png"
     tag: Go
     tags:
       - go
@@ -58,7 +58,7 @@ projects:
     featured_text: "Immediate-mode debug-draw library for Vulkan."
     featured: true
     image_resize: "x192"
-    image: "/images/placeholder.png"
+    image: "/images/featured/vkdd.png"
     tag: C++
     tags:
       - c++
@@ -71,7 +71,7 @@ projects:
     featured_text: "Database management with auditable migrations and a terminal browser."
     featured: true
     image_resize: "x192"
-    image: "/images/placeholder.png"
+    image: "/images/featured/ferrodb.png"
     tag: Go
     tags:
       - go
