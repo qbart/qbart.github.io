@@ -618,6 +618,18 @@ footer p {
 @media (max-width: 640px) {
   body { font-size: 17px; }
 
+  .container {
+    padding: 0 20px;
+  }
+
+  main {
+    border-radius: 0;
+  }
+
+  .hero {
+    padding: 16px 0 40px;
+  }
+
   .hero-layout {
     flex-direction: column;
   }
