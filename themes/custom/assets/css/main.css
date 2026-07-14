@@ -28,12 +28,19 @@ html {
   /* no smooth-scroll, no fuss */
 }
 
+main {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  box-shadow: 2px 0 2px #dcdcdc, -2px 0 2px #dcdcdc, 0 2px 4px #dcdcdc;
+}
+
 body {
   font-family: var(--font-body);
-  background: #ffffff;
+  background: #e1e2e3;
   color: var(--text);
   line-height: 1.45;
-  font-size: 18px;
+  font-size: 1em;
   margin: 0;
 }
 
@@ -104,9 +111,9 @@ code, pre, kbd, samp {
 
 /* Content column: a plain, readable measure, left aligned. */
 .container {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 40px;
 }
 
 /* --------------------------------------------------------------------------
@@ -121,8 +128,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #808080;
+  padding-bottom: 16px;
 }
 
 .logo {
@@ -174,7 +180,7 @@ nav {
    Hero / about
    -------------------------------------------------------------------------- */
 .hero {
-  padding: 20px 0;
+  padding: 40px 0;
 }
 
 .hero-layout {
@@ -197,6 +203,7 @@ nav {
   max-width: none;
   font-size: 1em;
   color: var(--text);
+  margin: 0;
 }
 
 .hero p a {
@@ -393,8 +400,7 @@ section {
    -------------------------------------------------------------------------- */
 footer {
   padding: 16px 0;
-  text-align: left;
-  border-top: 1px solid #808080;
+  text-align: center;
 }
 
 footer p {

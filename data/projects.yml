@@ -1,8 +1,8 @@
 projects:
   - name: "DIYE"
     url: "https://github.com/qbart/diye"
-    text: "Opinionated toolkit for 3D-based applications and games (Vulkan based)."
-    featured_text: "Vulkan toolkit for 3D-based applications."
+    text: "Opinionated toolkit for 3D-based applications and games in Vulkan."
+    featured_text: "Opinionated toolkit for 3D-based applications and games in Vulkan."
     featured: true
     image_resize: "x192"
     image: "/images/featured/diye.png"
@@ -14,7 +14,7 @@ projects:
   - name: "vkm"
     url: "https://github.com/qbart/vkm"
     text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
-    featured_text: "Math library for games with first-class Vulkan and Slang interop."
+    featured_text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
     featured: true
     image_resize: "x192"
     image: "/images/featured/vkm.png"
@@ -27,8 +27,8 @@ projects:
       - gamedev
   - name: "assetc"
     url: "https://github.com/qbart/assetc"
-    text: "Asset Compiler that turns raw assets into runtime friendly formats for Games."
-    featured_text: "Asset compiler turning raw assets into runtime-friendly formats."
+    text: "Asset compiler supporting images, meshes, shaders, cubemaps, materials, and fonts. Converts them to optimized runtime formats: UASTC .ktx2, .hmesh, .spv, .hmat, .hfont."
+    featured_text: "Asset compiler supporting images, meshes, shaders, cubemaps, materials, and fonts. Converts them to optimized runtime formats: UASTC .ktx2, .hmesh, .spv, .hmat, .hfont."
     featured: true
     image_resize: "x192"
     image: "/images/featured/assetc.png"
@@ -41,8 +41,8 @@ projects:
       - ktx
   - name: "zen"
     url: "https://github.com/SoftKiwiGames/zen"
-    text: "Web framework for lazy devs."
-    featured_text: "Web framework for lazy devs."
+    text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
+    featured_text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
     featured: true
     image_resize: "x192"
     image: "/images/featured/zen.png"
@@ -54,8 +54,8 @@ projects:
       - web
   - name: "vkdd"
     url: "https://github.com/qbart/vkdd"
-    text: "Immediate-mode debug-draw library for Vulkan."
-    featured_text: "Immediate-mode debug-draw library for Vulkan."
+    text: "Immediate-mode debug-draw for C++23 and Vulkan, using dynamic rendering. Think Dear ImGui, but for 3D geometry: queue shapes each frame, upload, draw."
+    featured_text: "Immediate-mode debug-draw for C++23 and Vulkan, using dynamic rendering. Think Dear ImGui, but for 3D geometry: queue shapes each frame, upload, draw."
     featured: true
     image_resize: "x192"
     image: "/images/featured/vkdd.png"
@@ -68,7 +68,7 @@ projects:
   - name: "FerroDB"
     url: "https://github.com/qbart/ferrodb"
     text: "Database management tool with explicit, auditable schema migrations and built-in terminal browser."
-    featured_text: "Database management with auditable migrations and a terminal browser."
+    featured_text: "Database management tool. Focused on explicit, auditable schema migrations with built-in terminal browser."
     featured: true
     image_resize: "x192"
     image: "/images/featured/ferrodb.png"
@@ -214,15 +214,6 @@ projects:
       - monitoring
       - ecs
       - loadbalancer
-  - name: "Raspberry PI Boardgame Turns"
-    url: "https://github.com/qbart/rpi-boardgame-turns"
-    featured: false
-    text: "App designed for Raspberry PI for measuring turns when playing board games."
-    tag: Elixir
-    tags:
-      - elixir
-      - boardgame
-      - rpi
   - name: "BMO"
     url: "https://github.com/qbart/bmo"
     featured: false
