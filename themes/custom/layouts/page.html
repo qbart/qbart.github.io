@@ -20,37 +20,6 @@
       </div>
       <aside class="article-aside">
         <!-- <div class="article-hero"></div> -->
-        {{ with .Params.summary }}
-        <div class="aside-card">
-          <h4>Summary</h4>
-          <p>{{ . }}</p>
-          <!--
-          <div class="summary-chart" aria-label="Article emphasis overview">
-            <div class="summary-chart-row">
-              <span>Technical depth</span>
-              <div class="summary-chart-meter">
-                <span class="summary-chart-fill tech"></span>
-              </div>
-              <span class="summary-chart-value">High</span>
-            </div>
-            <div class="summary-chart-row">
-              <span>Business framing</span>
-              <div class="summary-chart-meter">
-                <span class="summary-chart-fill business"></span>
-              </div>
-              <span class="summary-chart-value">Medium</span>
-            </div>
-            <div class="summary-chart-row">
-              <span>Experimentation</span>
-              <div class="summary-chart-meter">
-                <span class="summary-chart-fill experiment"></span>
-              </div>
-              <span class="summary-chart-value">Active</span>
-            </div>
-          </div>
-          -->
-        </div>
-        {{ end }}
         {{ if isset .Params "takeaways" }}
         <div class="aside-card">
           <h4>Key Takeaways</h4>

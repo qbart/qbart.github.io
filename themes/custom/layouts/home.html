@@ -22,6 +22,41 @@
   </div>
 </section>
 
+<!-- Latest -->
+<section id="latest">
+  <div class="section-header">
+    <h2>Latest</h2>
+  </div>
+  {{ $pinned := where (where .Site.RegularPages "Section" "posts") "Params.pin" true }}
+  {{ $pinned = $pinned.ByDate.Reverse }}
+  {{ with $pinned }}
+  <div class="projects-grid">
+    {{ range . }}
+    {{ $post := . }}
+    <a href="{{ .RelPermalink }}" class="project-card">
+      {{ with .Params.image }}
+      <div class="project-cover">
+        <img src="{{ . }}" alt="{{ $post.LinkTitle }}" class="project-image">
+      </div>
+      {{ end }}
+      <div class="project-info">
+        <h3>{{ .LinkTitle }}</h3>
+        <p>{{ .Params.summary }}</p>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+  <div class="list-items">
+    <a href="/posts/" class="list-item">
+      <div class="list-item-left">
+        <h3>Read more...</h3>
+      </div>
+      <div class="list-item-right">Archive</div>
+    </a>
+  </div>
+</section>
+
 <!-- Featured Projects -->
 <section id="projects">
   <div class="section-header">
@@ -82,22 +117,6 @@ Sponsor this work
     </a>
   </div>
 </section>
-
-<!-- Archives / Posts -->
-<section id="archives">
-  <div class="section-header">
-    <h2>Writing</h2>
-  </div>
-  <div class="list-items">
-    <a href="/posts/" class="list-item">
-      <div class="list-item-left">
-        <h3>Read more...</h3>
-      </div>
-      <div class="list-item-right">Archive</div>
-    </a>
-  </div>
-</section>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {

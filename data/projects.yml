@@ -1,4 +1,18 @@
 projects:
+  - name: "bi"
+    url: "https://bi.qbart.dev"
+    text: "Batteries-included modal editor. Tree-sitter, git, and LSP are meant to be built in, not plugins."
+    featured_text: "Batteries-included modal editor. Tree-sitter, git, and LSP are meant to be built in, not plugins."
+    featured: true
+    image_resize: "x192"
+    image: "/images/featured/bi.png"
+    tag: Rust
+    tags:
+      - rust
+      - editor
+      - tree-sitter
+      - lsp
+      - git
   - name: "DIYE"
     url: "https://github.com/qbart/diye"
     text: "Opinionated toolkit for 3D-based applications and games in Vulkan."

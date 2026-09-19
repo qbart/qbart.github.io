@@ -1,7 +1,10 @@
 ---
 draft: false
+pin: true
 title: "assetc gets LOD controls"
 date: 2026-09-19T22:30:00+02:00
+summary: "meshopt-based LOD generation is now tunable per-asset via assetc.yml, with retry/fallback for stalled simplification and a matching LOD selector in the inspector."
+image: "/posts/2026/assetc-lod-controls.png"
 tags:
 - c++
 - gamedev
