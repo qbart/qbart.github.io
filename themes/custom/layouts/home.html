@@ -118,6 +118,56 @@ Sponsor this work
   </div>
 </section>
 
+{{/* 3D Gallery - disabled for now
+<!-- 3D Gallery -->
+{{ $galleryPage := site.GetPage "/3d" }}
+{{ with $galleryPage }}
+{{ $renders := first 3 (sort (default (slice) .Params.renders) "date" "desc") }}
+{{ with $renders }}
+<section id="gallery3d">
+  <div class="section-header">
+    <h2>3D Gallery</h2>
+  </div>
+  <div class="projects-grid">
+    {{ range . }}
+    {{ $render := . }}
+    {{ $cover := "" }}
+    {{ if isset $render "images" }}
+      {{ with $render.images }}
+        {{ $cover = $galleryPage.Resources.GetMatch (index . 0) }}
+      {{ end }}
+    {{ else if isset $render "videos" }}
+      {{ with $render.videos }}
+        {{ $cover = $galleryPage.Resources.GetMatch (index (index . 0) "cover") }}
+      {{ end }}
+    {{ end }}
+    <a href="/3d/" class="project-card">
+      {{ with $cover }}
+      {{ $thumb := .Fit "240x180 jpg" }}
+      <div class="project-cover">
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $render.title }}" class="project-image">
+      </div>
+      {{ end }}
+      <div class="project-info">
+        <h3>{{ $render.title }}</h3>
+        <p>{{ $render.description }}</p>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  <div class="list-items">
+    <a href="/3d/" class="list-item">
+      <div class="list-item-left">
+        <h3>View full gallery...</h3>
+      </div>
+      <div class="list-item-right">3D</div>
+    </a>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+*/}}
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const sponsorCard = document.querySelector('.sponsor-card');
