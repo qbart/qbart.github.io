@@ -1,5 +1,10 @@
 ---
 title: "Gallery"
+# No standalone /3d/ page: this only holds the renders shown in the home page's 3D Gallery section.
+build:
+  render: never
+  list: never
+  publishResources: true
 description: "Selected projects from my 3D learning journey in Blender."
 renders:
   - title: "Building with Geometry Nodes"

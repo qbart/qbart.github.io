@@ -1,201 +1,135 @@
 {{ define "main" }}
-<!-- About Section -->
+<!-- About -->
 <section class="hero">
-  <div class="hero-layout">
-    <div class="hero-text">
-      <h1>{{ .Site.Params.homeIntroTitle }}</h1>
-
-      {{ with .Site.Params.homeIntroContent }}
-      <p>{{ . | markdownify }}</p>
-      {{ end }}
+  <div class="hero-text">
+    {{ with site.Params.homeKicker }}<div class="label">{{ . }}</div>{{ end }}
+    <h1>{{ replace site.Params.homeIntroTitle ", " ",<br>" | safeHTML }}</h1>
+    {{ with site.Params.homeIntroContent }}
+    <div class="hero-intro">
+      {{ $.RenderString (dict "display" "block") . }}
     </div>
-    <div class="hero-links">
-      {{ with .Site.Params.social }}
-      {{- range . }}
-      <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
-        title="{{ (.title | default .name) | title }}">
-        {{- .svg | safeHTML }}
-      </a>
-      {{- end }}
-      {{ end }}
-    </div>
+    {{ end }}
   </div>
+
+  <aside id="contact" class="spec">
+    <div class="spec-bar">
+      <span>SPEC SHEET</span>
+      {{ with site.Params.specRef }}<span>{{ . }}</span>{{ end }}
+    </div>
+    {{ with site.Params.spec }}
+    <div class="spec-rows">
+      {{ range . }}
+      <span class="label">{{ .label }}</span><span>{{ .value }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ with site.Params.social }}
+    <div class="contact">
+      {{ range . }}
+      {{ $url := trim .url " " }}
+      <a href="{{ $url | safeURL }}"{{ if not (hasPrefix $url "mailto:") }} target="_blank" rel="noopener noreferrer me"{{ end }}>
+        {{ .title | default (.name | title) }} <span aria-hidden="true">↗</span>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </aside>
 </section>
 
-<!-- Latest -->
-<section id="latest">
-  <div class="section-header">
+<!-- 01 Latest -->
+<section id="latest" class="section">
+  <div class="section-head">
+    <span class="section-num">01</span>
     <h2>Latest</h2>
+    <span class="spacer"></span>
+    <a class="mono" href="/posts/">Archive →</a>
   </div>
-  {{ $pinned := where (where .Site.RegularPages "Section" "posts") "Params.pin" true }}
-  {{ $pinned = $pinned.ByDate.Reverse }}
-  {{ with $pinned }}
-  <div class="projects-grid">
-    {{ range . }}
-    {{ $post := . }}
-    <a href="{{ .RelPermalink }}" class="project-card">
-      {{ with .Params.image }}
-      <div class="project-cover">
-        <img src="{{ . }}" alt="{{ $post.LinkTitle }}" class="project-image">
-      </div>
-      {{ end }}
-      <div class="project-info">
+  {{ $recent := first 5 (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+  <div class="latest">
+    {{ range $recent }}
+    <a href="{{ .RelPermalink }}" class="latest-row">
+      {{ partial "post-thumb.html" . }}
+      <div class="latest-body">
+        <span class="label">{{ .Date.Format "2006-01-02" }}{{ with .Params.kicker }} · {{ . }}{{ end }}</span>
         <h3>{{ .LinkTitle }}</h3>
-        <p>{{ .Params.summary }}</p>
+        {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+        {{ with .Params.tags }}<div class="tag-list">{{ range . }}<span class="chip">{{ . }}</span>{{ end }}</div>{{ end }}
       </div>
     </a>
     {{ end }}
+  </div>
+</section>
+
+<!-- 02 Featured Projects -->
+{{ $featured := where site.Data.projects.projects "featured" true }}
+<section id="projects" class="section">
+  <div class="section-head section-head--ruled">
+    <span class="section-num">02</span>
+    <h2>Featured Projects</h2>
+    <span class="spacer"></span>
+    <span class="label">{{ printf "%02d" (len $featured) }} entries</span>
+  </div>
+  <div class="projects">
+    {{ range $i, $p := $featured }}
+    <article class="project">
+      <a class="fig{{ if and $p.image (ne $p.image_fit "contain") }} fig--fill{{ end }}" href="{{ $p.url }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <span class="fig-tag">Fig. 2.{{ add $i 1 }}</span>
+        {{ with $p.image }}
+        {{ with resources.Get . }}
+        {{ $img := cond (eq $p.image_fit "contain") (.Resize ($p.image_resize | default "x192")) (.Fill "720x450 Center") }}
+        <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" loading="lazy">
+        {{ end }}
+        {{ else }}
+        {{ partial "fig-drawing.html" ($p.drawing | default "") }}
+        <span class="fig-dim">[NO SCREENSHOT]</span>
+        {{ end }}
+      </a>
+      <div class="project-title">
+        <h3><a href="{{ $p.url }}" target="_blank" rel="noopener noreferrer">{{ $p.name }}</a></h3>
+        {{ with $p.category | default $p.tag }}<span class="chip">{{ . }}</span>{{ end }}
+      </div>
+      <p>{{ $p.featured_text | default $p.text }}</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+<!-- 03 Open Source -->
+<section id="open-source" class="section">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2>Open Source</h2>
+    <span class="spacer"></span>
+    <span class="label">Index</span>
+  </div>
+  <div class="os-row os-row--head label">
+    <span>No.</span><span>Name</span><span class="os-desc">Description</span><span class="os-lang">Lang</span>
+  </div>
+  {{ $oss := where (where site.Data.projects.projects "featured" false) "hidden" "!=" true }}
+  {{ range $i, $p := $oss }}
+  <div class="os-row">
+    <span class="os-num">{{ printf "3.%02d" (add $i 1) }}</span>
+    <a class="os-name" href="{{ $p.url }}" target="_blank" rel="noopener noreferrer">{{ $p.name }}</a>
+    <span class="os-desc">{{ $p.text }}</span>
+    <span class="os-lang">{{ $p.tag }}</span>
   </div>
   {{ end }}
-  <div class="list-items">
-    <a href="/posts/" class="list-item">
-      <div class="list-item-left">
-        <h3>Read more...</h3>
-      </div>
-      <div class="list-item-right">Archive</div>
-    </a>
+  <div class="os-foot">
+    <a class="more-link" href="https://github.com/qbart?tab=repositories" target="_blank" rel="noopener noreferrer">Browse others on GitHub →</a>
   </div>
 </section>
 
-<!-- Featured Projects -->
-<section id="projects">
-  <div class="section-header">
-    <h2>Featured Projects</h2>
-  </div>
-  <div class="projects-grid">
-    {{ range where .Site.Data.projects.projects "featured" true }}
-    <a href="{{ .url }}" class="project-card" rel="noopener noreferrer" target="_blank">
-      <div class="project-cover">
-        {{ $image := resources.Get .image }}
-        {{ $image := $image.Resize .image_resize }}
-        <!-- { $image := $image.Crop "96x96" } -->
-        <img src="{{ $image.RelPermalink }}" alt="{{ .name }}" class="project-image project-image--{{ .name | urlize }}">
-      </div>
-      <div class="project-info">
-        <h3>{{ .name }}</h3>
-        <p>{{ .featured_text }}</p>
-      </div>
-    </a>
-    {{ end }}
-    <!--
-<a href="#" class="project-card sponsor-card">
-<div class="project-cover"></div>
-<div class="project-info">
-<h3>
-<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"/></svg>
-Sponsor this work
-</h3>
-<p>Help fund more open source and writing.</p>
-</div>
-</a>
--->
-  </div>
-</section>
-
-<!-- Open Source -->
-<section id="opensource">
-  <div class="section-header">
-    <h2>Open Source</h2>
-  </div>
-  <div class="list-items">
-    {{ range where .Site.Data.projects.projects "featured" false }}
-    <a href="{{ .url }}" class="list-item" rel="noopener noreferrer" target="_blank">
-      <div class="list-item-left">
-        <h3>{{ .name }}</h3>
-        <p>{{ .text }}</p>
-      </div>
-      <div class="list-item-right">{{ .tag }}</div>
-    </a>
-    {{ end }}
-    <a href="https://github.com/qbart?tab=repositories" class="list-item">
-      <div class="list-item-left">
-        <h3>Browse others...</h3>
-      </div>
-      <div class="list-item-right">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.262.793-.578v-2.233C6.073 21.319 5.322 19.05 5.322 19.05c-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.833 2.806 1.304 3.492.997.108-.776.418-1.305.762-1.604-2.665-.305-5.466-1.335-5.466-5.931 0-1.31.469-2.382 1.236-3.221-.124-.304-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3.004-.404 11.53 11.53 0 0 1 3.006.404c2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.626-5.479 5.921.43.372.824 1.103.824 2.223v3.293c0 .316.193.689.8.577C20.565 21.8 24 17.302 24 12 24 5.373 18.627 0 12 0Z"/></svg>
-      </div>
-    </a>
-  </div>
-</section>
-
-{{/* 3D Gallery - disabled for now
-<!-- 3D Gallery -->
-{{ $galleryPage := site.GetPage "/3d" }}
-{{ with $galleryPage }}
-{{ $renders := first 3 (sort (default (slice) .Params.renders) "date" "desc") }}
-{{ with $renders }}
-<section id="gallery3d">
-  <div class="section-header">
+<!-- 04 3D Gallery -->
+{{ with site.GetPage "/3d" }}
+<section id="gallery" class="section">
+  <div class="section-head section-head--ruled">
+    <span class="section-num">04</span>
     <h2>3D Gallery</h2>
+    <span class="spacer"></span>
+    <span class="label">{{ printf "%02d" (len (default (slice) .Params.renders)) }} renders</span>
   </div>
-  <div class="projects-grid">
-    {{ range . }}
-    {{ $render := . }}
-    {{ $cover := "" }}
-    {{ if isset $render "images" }}
-      {{ with $render.images }}
-        {{ $cover = $galleryPage.Resources.GetMatch (index . 0) }}
-      {{ end }}
-    {{ else if isset $render "videos" }}
-      {{ with $render.videos }}
-        {{ $cover = $galleryPage.Resources.GetMatch (index (index . 0) "cover") }}
-      {{ end }}
-    {{ end }}
-    <a href="/3d/" class="project-card">
-      {{ with $cover }}
-      {{ $thumb := .Fit "240x180 jpg" }}
-      <div class="project-cover">
-        <img src="{{ $thumb.RelPermalink }}" alt="{{ $render.title }}" class="project-image">
-      </div>
-      {{ end }}
-      <div class="project-info">
-        <h3>{{ $render.title }}</h3>
-        <p>{{ $render.description }}</p>
-      </div>
-    </a>
-    {{ end }}
-  </div>
-  <div class="list-items">
-    <a href="/3d/" class="list-item">
-      <div class="list-item-left">
-        <h3>View full gallery...</h3>
-      </div>
-      <div class="list-item-right">3D</div>
-    </a>
-  </div>
+  {{ with .Params.description }}<p class="section-intro">{{ . }}</p>{{ end }}
+  {{ partial "gallery.html" (dict "page" . "prefix" "4.") }}
 </section>
 {{ end }}
-{{ end }}
-*/}}
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const sponsorCard = document.querySelector('.sponsor-card');
-  if (!sponsorCard) return;
-
-  let heartTimer;
-
-  const spawnHeart = () => {
-    const heart = document.createElement('span');
-    heart.className = 'heart';
-    heart.textContent = '❤';
-    const size = 12 + Math.random() * 6;
-    heart.style.fontSize = `${size}px`;
-    heart.style.left = `${10 + Math.random() * 80}%`;
-    heart.style.setProperty('--heart-rotate', `${-10 + Math.random() * 20}deg`);
-    heart.style.animationDuration = `${1.3 + Math.random() * 0.5}s`;
-    heart.addEventListener('animationend', () => heart.remove());
-    sponsorCard.appendChild(heart);
-  };
-
-  sponsorCard.addEventListener('mouseenter', () => {
-    spawnHeart();
-    heartTimer = setInterval(spawnHeart, 100);
-  });
-
-  sponsorCard.addEventListener('mouseleave', () => {
-    clearInterval(heartTimer);
-  });
-});
-</script>
 {{ end }}

@@ -1,5 +1,4 @@
-<div class="container">
-    <p>
-        {{ .Site.Params.footerContent }}
-    </p>
-</div>
+<footer class="site-footer">
+  <p>{{ site.Params.footerContent }}</p>
+  <span class="label">© {{ now.Year }} {{ site.Copyright | default site.Title }} — End of manual</span>
+</footer>

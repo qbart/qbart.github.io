@@ -1,61 +1,48 @@
 {{ define "main" }}
-<section class="article">
-  <a class="back-link" href="/posts/">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
-    Back
-  </a>
-  <article class="article-body">
-    <div class="article-header">
-      <div class="article-kicker">Writing</div>
-      <h1 class="article-title">{{ .Title }}</h1>
-      <div class="article-meta">
-        <span>{{ .Date.Format "02 Jan, 2006" }}</span>
-        <span>{{ .ReadingTime }} min read</span>
-        <!-- <span>Engineering</span> -->
+<article class="article">
+  <header class="article-head">
+    <a class="back-link" href="/posts/">← All writing</a>
+    <div class="label">{{ with .Params.kicker }}{{ . }}{{ else }}Writing{{ end }}</div>
+    <h1 class="article-title">{{ .Title }}</h1>
+    <div class="article-meta label">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+      <span>{{ .ReadingTime }} min read</span>
+    </div>
+  </header>
+
+  <div class="article-grid">
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+
+    <aside class="article-aside">
+      {{ with .Params.takeaways }}
+      <div class="spec">
+        <div class="spec-bar"><span>KEY TAKEAWAYS</span></div>
+        <ul class="aside-list">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
       </div>
-    </div>
-    <div class="article-grid">
-      <div class="article-content">
-        {{ .Content }}
+      {{ end }}
+      <div class="spec">
+        <div class="spec-bar"><span>SPEC SHEET</span></div>
+        <div class="spec-rows">
+          <span class="label">Date</span><span>{{ .Date.Format "02 Jan 2006" }}</span>
+          <span class="label">Reading</span><span>{{ .ReadingTime }} min</span>
+          {{ with .Params.tags }}
+          <span class="label">Tags</span>
+          <span class="tag-list">{{ range . }}<span class="chip">{{ . }}</span>{{ end }}</span>
+          {{ end }}
+        </div>
       </div>
-      <aside class="article-aside">
-        <!-- <div class="article-hero"></div> -->
-        {{ if isset .Params "takeaways" }}
-        <div class="aside-card">
-          <h4>Key Takeaways</h4>
-          <ul>
-            {{ range .Params.takeaways }}
-            <li>{{ . }}</li>
-            {{ end }}
-          </ul>
-        </div>
-        {{ end }}
-        <div class="aside-card">
-          <h4>Tags</h4>
-          <div class="tag-list">
-            {{ range .Params.tags }}
-            <span class="tag">{{ . }}</span>
-            {{ end }}
-          </div>
-        </div>
-      </aside>
-    </div>
-    {{/*
-    {{ with .Params.summary }}
-    <div class="article-summary">
-      <h4>Summary</h4>
-      <p>{{ . }}</p>
-    </div>
-    {{ end }}
-    */}}
-    <div class="article-footer">
-      <a class="back-to-top" href="#top">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5l-6 6M12 5l6 6M12 5v14" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        Back to top
-      </a>
-    </div>
-  </article>
-</section>
+    </aside>
+  </div>
+
+  <footer class="article-foot">
+    <a class="back-link" href="/posts/">← All writing</a>
+    <a class="back-link" href="#top">Back to top ↑</a>
+  </footer>
+</article>
 {{ end }}

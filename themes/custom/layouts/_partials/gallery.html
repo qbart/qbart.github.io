@@ -1,37 +1,30 @@
-{{ define "main" }}
-{{ $renders := sort (default (slice) .Params.renders) "date" "desc" }}
-<section class="gallery-hero">
-  <div class="gallery-hero-content">
-    <p class="gallery-kicker">3D Modeling</p>
-    <h1>{{ .Title }}</h1>
-    {{ with .Params.description }}
-    <p class="gallery-intro">{{ . }}</p>
-    {{ end }}
-  </div>
-</section>
-
+{{- /*
+3D gallery grid. Context: dict "page" (the /3d section page) "prefix" (figure number prefix, e.g. "4.").
+Renders are listed newest first by their `date` front matter, which is used only for ordering.
+*/ -}}
+{{ $page := .page }}
+{{ $prefix := .prefix | default "" }}
+{{ $renders := sort (default (slice) $page.Params.renders) "date" "desc" }}
 {{ if gt (len $renders) 0 }}
 <section class="gallery">
-  <div class="gallery-grid">
-    {{ range $renders }}
-    {{ $render := . }}
+    {{ range $i, $render := $renders }}
     {{ $images := slice }}
     {{ if isset $render "images" }}
       {{ range $render.images }}
-        {{ with $.Resources.GetMatch . }}
+        {{ with $page.Resources.GetMatch . }}
           {{ $images = $images | append . }}
         {{ end }}
       {{ end }}
     {{ else if isset $render "image" }}
-      {{ with $.Resources.GetMatch $render.image }}
+      {{ with $page.Resources.GetMatch $render.image }}
         {{ $images = $images | append . }}
       {{ end }}
     {{ end }}
     {{ $videoThumbs := slice }}
     {{ if isset $render "videos" }}
       {{ range $render.videos }}
-        {{ $videoCover := $.Resources.GetMatch .cover }}
-        {{ $videoMovie := $.Resources.GetMatch .movie }}
+        {{ $videoCover := $page.Resources.GetMatch .cover }}
+        {{ $videoMovie := $page.Resources.GetMatch .movie }}
         {{ if and $videoCover $videoMovie }}
           {{ $videoDisplay := $videoCover.Fit "1200x900 jpg" }}
           {{ $videoThumb := $videoCover.Fit "400x400 jpg" }}
@@ -57,7 +50,8 @@
       {{ $defaultVideoPoster = $defaultPosterResource.RelPermalink }}
     {{ end }}
     <article class="render-card">
-      <div class="render-display">
+      <div class="render-display fig fig--fill">
+        <span class="fig-tag">Fig. {{ $prefix }}{{ sub (len $renders) $i }}</span>
         {{ with $coverResource }}
         {{ $coverDisplay := .Fit "1200x900 jpg" }}
         <a class="render-image-link{{ if $initialVideo }} is-hidden{{ end }}" href="{{ $coverLinkTarget }}" target="_blank" rel="noopener noreferrer">
@@ -80,11 +74,6 @@
         {{ end }}
       </div>
       <div class="render-card-body">
-        <div class="render-meta">
-          {{ with $render.date }}
-          <time datetime="{{ . }}">{{ (time .).Format "02 Jan 2006" }}</time>
-          {{ end }}
-        </div>
         <h3>{{ $render.title }}</h3>
         {{ with $render.description }}
         <p>{{ . }}</p>
@@ -118,89 +107,9 @@
       </div>
     </article>
     {{ end }}
-  </div>
 </section>
 {{ else }}
-<section class="gallery">
+<section class="section">
   <p>No renders published yet. Check back soon.</p>
 </section>
-{{ end }}
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.render-card').forEach(card => {
-    const coverLink = card.querySelector('.render-image-link');
-    const coverImg = coverLink?.querySelector('img');
-    const videoPlayer = card.querySelector('.render-video');
-    const thumbs = card.querySelectorAll('.render-thumb');
-
-    const showImage = btn => {
-      if (!coverLink || !coverImg) {
-        return;
-      }
-      const display = btn.dataset.display;
-      const original = btn.dataset.original;
-      if (!display || !original) {
-        return;
-      }
-      if (videoPlayer) {
-        videoPlayer.pause();
-        videoPlayer.removeAttribute('src');
-        const defaultPoster = videoPlayer.dataset.defaultPoster;
-        if (defaultPoster) {
-          videoPlayer.poster = defaultPoster;
-        }
-        videoPlayer.load();
-        videoPlayer.classList.add('is-hidden');
-      }
-      coverImg.src = display;
-      coverLink.href = original;
-      coverLink.classList.remove('is-hidden');
-    };
-
-    const showVideo = btn => {
-      if (!videoPlayer) {
-        return;
-      }
-      const videoSrc = btn.dataset.original;
-      if (!videoSrc) {
-        return;
-      }
-      if (coverLink) {
-        coverLink.classList.add('is-hidden');
-      }
-      const poster = btn.dataset.poster || videoPlayer.dataset.defaultPoster || btn.dataset.display;
-      if (poster) {
-        videoPlayer.poster = poster;
-      }
-      const currentSrc = videoPlayer.getAttribute('src');
-      if (currentSrc !== videoSrc) {
-        videoPlayer.setAttribute('src', videoSrc);
-        videoPlayer.load();
-      } else {
-        videoPlayer.currentTime = 0;
-      }
-      videoPlayer.classList.remove('is-hidden');
-      videoPlayer.play().catch(() => {});
-    };
-
-    thumbs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const type = btn.dataset.type || 'image';
-        if (type === 'video') {
-          showVideo(btn);
-        } else {
-          showImage(btn);
-        }
-        thumbs.forEach(other => {
-          other.classList.remove('is-active');
-          other.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-pressed', 'true');
-      });
-    });
-  });
-});
-</script>
 {{ end }}

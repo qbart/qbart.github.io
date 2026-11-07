@@ -1,0 +1,34 @@
+{{- /*
+Thumbnail figure for a post in lists. Context: the post page.
+Picks, in order: `image` front matter, the first {{< fig src="..." >}} in the post,
+`drawing` front matter, a slides drawing for "Slides:" posts, the default drawing.
+Images found as resources (the post's bundle, the posts section, or assets) are
+cropped to 480x300; anything else is used as-is.
+*/ -}}
+{{- $p := . -}}
+{{- $src := $p.Params.image | default "" -}}
+{{- if not $src -}}
+  {{- with findRESubmatch `\{\{<\s*fig\s+src="([^"]+)"` $p.RawContent 1 -}}
+    {{- $src = index (index . 0) 1 -}}
+  {{- end -}}
+{{- end -}}
+{{- $url := "" -}}
+{{- with $src -}}
+  {{- $res := $p.Resources.GetMatch . -}}
+  {{- if not $res -}}
+    {{- with site.GetPage "/posts" -}}{{- $res = .Resources.GetMatch (strings.TrimPrefix "/posts/" $src) -}}{{- end -}}
+  {{- end -}}
+  {{- if not $res -}}{{- $res = resources.Get $src -}}{{- end -}}
+  {{- if $res -}}
+    {{- $url = ($res.Fill "480x300 Center").RelPermalink -}}
+  {{- else -}}
+    {{- $url = $src -}}
+  {{- end -}}
+{{- end -}}
+<div class="fig{{ if $url }} fig--fill{{ end }}" aria-hidden="true">
+  {{- if $url }}
+  <img src="{{ $url }}" alt="" loading="lazy">
+  {{- else }}
+  {{ partial "fig-drawing.html" ($p.Params.drawing | default (cond (hasPrefix $p.Title "Slides") "slides" "")) }}
+  {{- end }}
+</div>

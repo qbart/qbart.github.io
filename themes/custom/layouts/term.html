@@ -1,7 +1,12 @@
 {{ define "main" }}
+<section class="page-head">
+  <div class="label">Index</div>
   <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  {{ with .Content }}<div class="article-content">{{ . }}</div>{{ end }}
+</section>
+<section class="section plain-list">
   {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
   {{ end }}
+</section>
 {{ end }}

@@ -6,6 +6,7 @@ projects:
     featured: true
     image_resize: "x192"
     image: "/images/featured/bi.png"
+    category: "Editor"
     tag: Rust
     tags:
       - rust
@@ -20,52 +21,54 @@ projects:
     featured: true
     image_resize: "x192"
     image: "/images/featured/diye.png"
+    category: "Vulkan"
     tag: C++/Vulkan
     tags:
       - c++
       - vulkan
       - rendering
-  - name: "vkm"
-    url: "https://github.com/qbart/vkm"
-    text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
-    featured_text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
+  - name: "matma"
+    url: "https://github.com/qbart/matma"
     featured: true
-    image_resize: "x192"
-    image: "/images/featured/vkm.png"
-    tag: C++
+    text: "SIMD-first game math for Vulkan with Slang/HLSL naming. Rust port of vkm, no third-party dependencies."
+    category: "Math"
+    drawing: axes
+    tag: Rust
     tags:
-      - c++
-      - vulkan
+      - rust
       - math
-      - slang
+      - vulkan
+      - simd
       - gamedev
   - name: "assetc"
     url: "https://github.com/qbart/assetc"
-    text: "Asset compiler supporting images, meshes, shaders, cubemaps, materials, and fonts. Converts them to optimized runtime formats: UASTC .ktx2, .hmesh, .spv, .hmat, .hfont."
-    featured_text: "Asset compiler supporting images, meshes, shaders, cubemaps, materials, and fonts. Converts them to optimized runtime formats: UASTC .ktx2, .hmesh, .spv, .hmat, .hfont."
+    text: "Asset compiler and editor for games, rebuilt from scratch in Rust. Compiles textures, glTF models, materials, shaders, fonts and game data into runtime formats, read back by a dependency-free SDK crate."
+    featured_text: "Asset compiler and editor for games, rebuilt from scratch in Rust (was C++). Textures, glTF models with meshlets and LODs, materials, shaders, fonts and game data compiled to runtime formats and .pak files, loaded by a dependency-free SDK."
     featured: true
     image_resize: "x192"
     image: "/images/featured/assetc.png"
-    tag: C++
+    category: "Pipeline"
+    tag: Rust
     tags:
-      - c++
-      - vulkan
+      - rust
+      - bevy
+      - egui
       - assets
       - gltf
       - ktx
-  - name: "zen"
-    url: "https://github.com/SoftKiwiGames/zen"
-    text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
-    featured_text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
+  - name: "ktx-rs"
+    url: "https://github.com/qbart/ktx-rs"
     featured: true
-    image_resize: "x192"
-    image: "/images/featured/zen.png"
-    tag: Go
+    text: "Rust port of Khronos KTX-Software (libktx and the ktx CLI) with Basis Universal and ASTC encoders, byte identical to upstream."
+    category: "Textures"
+    drawing: mips
+    tag: Rust
     tags:
-      - go
-      - http
-      - framework
-      - web
+      - rust
+      - ktx
+      - textures
+      - basisu
+      - astc
   - name: "vkdd"
     url: "https://github.com/qbart/vkdd"
     text: "Immediate-mode debug-draw for C++23 and Vulkan, using dynamic rendering. Think Dear ImGui, but for 3D geometry: queue shapes each frame, upload, draw."
@@ -73,6 +76,7 @@ projects:
     featured: true
     image_resize: "x192"
     image: "/images/featured/vkdd.png"
+    category: "C++23"
     tag: C++
     tags:
       - c++
@@ -86,12 +90,53 @@ projects:
     featured: true
     image_resize: "x192"
     image: "/images/featured/ferrodb.png"
+    category: "Database"
+    image_fit: contain  # logo, not a screenshot: keep it centered instead of filling the frame
     tag: Go
     tags:
       - go
       - database
       - migrations
       - cli
+  - name: "meshopt-pure"
+    url: "https://github.com/qbart/meshopt-pure"
+    featured: false
+    text: "Pure Rust port of meshoptimizer with bit-identical output, plus gltfpack and clusterlod."
+    tag: Rust
+    tags:
+      - rust
+      - meshoptimizer
+      - meshes
+      - gltf
+  - name: "vkm"
+    url: "https://github.com/qbart/vkm"
+    text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
+    featured_text: "Math library for games, focused on best Vulkan and Slang interop as an alternative to GLM."
+    featured: false
+    image_resize: "x192"
+    image: "/images/featured/vkm.png"
+    category: "Math"
+    tag: C++
+    tags:
+      - c++
+      - vulkan
+      - math
+      - slang
+      - gamedev
+  - name: "zen"
+    url: "https://github.com/SoftKiwiGames/zen"
+    text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
+    featured_text: "Web framework for lazy people with sensible defaults made for APIs and cachable-UI embedding so everything lands in a single binary."
+    featured: false
+    image_resize: "x192"
+    image: "/images/featured/zen.png"
+    category: "Go · Web"
+    tag: Go
+    tags:
+      - go
+      - http
+      - framework
+      - web
   - name: "Hashira"
     url: "https://github.com/SoftKiwiGames/hashira"
     text: "WebAssembly 2D map renderer."
@@ -178,6 +223,7 @@ projects:
     url: "https://github.com/qbart/risky"
     featured: false
     text: "Go library that favors defaults over errors when parsing input."
+    hidden: true
     tag: Go
     tags:
       - go
@@ -187,6 +233,7 @@ projects:
     url: "https://github.com/qbart/go-web-template"
     featured: false
     text: "Go web template for rendering HTML on the server."
+    hidden: true
     tag: Go
     tags:
       - go
@@ -203,6 +250,7 @@ projects:
     featured: false
     image_resize: "x96"
     image: "/images/featured/krab.png"
+    hidden: true
     tag: Go
     tags:
       - go
@@ -221,6 +269,7 @@ projects:
     url: "https://github.com/qbart/ser"
     featured: false
     text: "Ser is a small monitoring tool for your AWS instances, targets groups, load balancers, ECS."
+    hidden: true
     tag: Go
     tags:
       - go
@@ -232,6 +281,7 @@ projects:
     url: "https://github.com/qbart/bmo"
     featured: false
     text: "IoT home for controlling Yeelight"
+    hidden: true
     tag: Go
     tags:
       - go
