@@ -7,6 +7,15 @@
     <div class="article-meta label">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
       <span>{{ .ReadingTime }} min read</span>
+      {{ if .Params.ai_assisted }}
+      <span class="ai-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M10 2.5l1.9 5.1a3 3 0 0 0 1.8 1.8L18.8 11.3l-5.1 1.9a3 3 0 0 0-1.8 1.8L10 20.1l-1.9-5.1a3 3 0 0 0-1.8-1.8L1.2 11.3l5.1-1.9a3 3 0 0 0 1.8-1.8z"/>
+          <path fill="currentColor" d="M19 1.5l.8 2.2a1.5 1.5 0 0 0 .9.9l2.2.8-2.2.8a1.5 1.5 0 0 0-.9.9L19 9.3l-.8-2.2a1.5 1.5 0 0 0-.9-.9L15.1 5.4l2.2-.8a1.5 1.5 0 0 0 .9-.9z"/>
+        </svg>
+        AI helped to write this article
+      </span>
+      {{ end }}
     </div>
   </header>
 

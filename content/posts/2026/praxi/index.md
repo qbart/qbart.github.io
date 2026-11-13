@@ -1,5 +1,6 @@
 ---
 draft: false
+ai_assisted: true
 image: "cue-game.jpg"
 slug: "praxi-video-codec-for-games"
 kicker: "Devlog · praxi"
@@ -15,7 +16,7 @@ tags:
 - release
 ---
 
-[praxi](https://github.com/qbart/praxi) is a video codec and player for games, written in pure Rust. It's named after the praxinoscope, the 19th-century animation device. 0.1.1 is out today on crates.io, with release binaries for Linux, macOS and Windows. It took two codecs to get here. The first one decoded almost for free but made files that were far too big.
+[praxi](https://github.com/qbart/praxi) is a video codec and player for games, written in pure Rust (me guiding Claude of course). It's named after the praxinoscope, the 19th-century animation device. 0.1.1 is out today on crates.io, with release binaries for Linux, macOS and Windows. It took two codecs to get here. The first one decoded almost for free but made files that were far too big.
 
 {{< fig src="cue-game.jpg" caption="The cue_game example in Bevy. The subtitle, the \"Look here\" marker, the camera shakes and the sounds all come from cues stored in the video file" >}}
 
@@ -74,7 +75,7 @@ For a few short loops on a menu screen, that's fine, and the block variants are 
 
 The way out is the one every real video codec takes: **transform coding with motion compensation**, the H.264 family. Its quality is set by its bitrate, so there is no ceiling. Before writing any code I wrote down the goal: **at most 1/5 of BC7's size at BC7's PSNR, or the project stops.**
 
-The catch is decode cost. The classic decoder is serial, which is the opposite of what a game wants. Bink 2 showed the way: keep the serial part (entropy decoding) small and on the CPU, and push the rest to compute shaders. So the design has a few rules:
+The problem is decode cost. A classic decoder works through a frame one step at a time, and a game can't spare that. Bink 2 solved it: do only the small sequential part on the CPU and the rest on the GPU. That gives the design a few rules:
 
 - **YCoCg instead of YCbCr.** The color transform is exact integer math, so it costs almost nothing and there is no matrix to signal. Chroma is 4:2:0 by default, 4:4:4 for UI and graphics with sharp colored edges. Alpha is a fourth plane.
 - **16x16 macroblocks and an 8x8 integer DCT** with flat quantization (`qp` 0-51, step doubles every 6). Flat steps give the most PSNR per bit, and PSNR parity with BC7 was the target.
@@ -272,5 +273,32 @@ cargo install praxi-cli praxi-viewer praxi-editor
 ```
 
 Encoding needs `ffmpeg` on `PATH`. Source, specs, and the measurements behind every number above are on [GitHub](https://github.com/qbart/praxi). Licensed MIT or Apache-2.0.
+
+## Roadmap
+
+Right now praxi plays in Rust:
+
+- **Any Rust engine** through the `praxi` crate, which has no engine or GPU dependency.
+- **Engines on `wgpu`** through `praxi-wgpu`, which also runs the GPU motion decoder.
+- **Bevy** through `praxi-bevy`, with video, audio and cues as observable events.
+
+The next runtime I want is **Godot**. It isn't scheduled yet.
+
+You don't have to wait for your engine, though. The tools don't care what plays the file. The encoder, the CLI, the viewer and the cue editor work the same whatever the game is written in. Only the runtime needs porting to your language, and the file format ([PRAXI.md](https://github.com/qbart/praxi/blob/main/docs/spec/PRAXI.md)) and cue sheets ([CUESHEET.md](https://github.com/qbart/praxi/blob/main/docs/spec/CUESHEET.md)) are fully specified for that. A port can start small:
+
+- **Block variants first.** Read the container, undo LZ4 or the Huffman byte planes, and upload BC7, BC1 or ASTC as a compressed texture. Cues are plain chunks with a type and typed fields.
+- **The motion codec later.** It's the bigger job: entropy decoding on the CPU plus the three GPU passes, and the output has to match the reference exactly.
+- **Audio:** PCM and IMA ADPCM are simple, and Opus needs a decoder, which most engines already have.
+
+## Measurements taken on
+
+All the numbers in this post come from my development machine:
+
+| | |
+|---|---|
+| CPU | AMD Ryzen AI 9 HX 370: 12 cores (4 fast Zen 5, 8 smaller Zen 5c), 24 threads, up to 5.2 GHz |
+| RAM | 44 GiB |
+| GPU | Radeon 890M (built into the CPU) |
+| OS | Pop!_OS 24.04, Linux 7.1 |
 
 *Screenshots show [Big Buck Bunny](https://peach.blender.org), © Blender Foundation, CC BY 3.0.*
