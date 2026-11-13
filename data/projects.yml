@@ -14,6 +14,22 @@ projects:
       - tree-sitter
       - lsp
       - git
+  - name: "praxi"
+    url: "https://github.com/qbart/praxi"
+    text: "Video codec and player for games in pure Rust. Frames stay GPU block-compressed or decode on the GPU, with audio and timed cues for subtitles, camera shakes and effects."
+    featured_text: "Video codec and player for games in pure Rust. BC7/BC1/ASTC frames or a GPU-decoded motion codec, multi-channel audio, and timed cues (subtitles, camera shakes, effects) edited on a timeline."
+    featured: true
+    image_resize: "x192"
+    image: "/images/featured/praxi.jpg"
+    category: "Video"
+    tag: Rust
+    tags:
+      - rust
+      - video
+      - codec
+      - wgpu
+      - bevy
+      - gamedev
   - name: "DIYE"
     url: "https://github.com/qbart/diye"
     text: "Opinionated toolkit for 3D-based applications and games in Vulkan."
