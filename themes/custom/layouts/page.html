@@ -40,6 +40,9 @@
         <div class="spec-rows">
           <span class="label">Date</span><span>{{ .Date.Format "02 Jan 2006" }}</span>
           <span class="label">Reading</span><span>{{ .ReadingTime }} min</span>
+          {{ with .Params.repo }}
+          <span class="label">Repo</span><span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . | strings.TrimPrefix "https://" | strings.TrimPrefix "github.com/" }}</a></span>
+          {{ end }}
           {{ with .Params.tags }}
           <span class="label">Tags</span>
           <span class="tag-list">{{ range . }}<span class="chip">{{ . }}</span>{{ end }}</span>

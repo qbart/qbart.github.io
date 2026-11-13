@@ -1,6 +1,7 @@
 ---
 draft: false
 ai_assisted: true
+repo: "https://github.com/qbart/praxi"
 image: "cue-game.jpg"
 slug: "praxi-video-codec-for-games"
 kicker: "Devlog · praxi"
